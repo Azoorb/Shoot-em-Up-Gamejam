@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementScript : MonoBehaviour
+public class EnemyMovementScript : MonoBehaviour,IEnemy
 {
     [SerializeField] private float speed = 0;
+    [SerializeField] private int hp;
 
     private Rigidbody2D rb;
     private GameObject ship;
@@ -27,5 +28,19 @@ public class EnemyMovementScript : MonoBehaviour
     {
         Vector2 dir = (ship.transform.position - transform.position).normalized;
         rb.position += dir * speed * Time.fixedDeltaTime;
+    }
+
+    public void TakeDammage(int damage)
+    {
+        hp -= damage;
+        if(hp<=0)
+        {
+            Died();
+        }
+    }
+
+    private void Died()
+    {
+        Destroy(gameObject);
     }
 }
