@@ -31,7 +31,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        transform.rotation = Quaternion.Euler(0, 0, -vectorAim.normalized.x * Mathf.Rad2Deg);
+        float angle = Mathf.Atan2(-vectorAim.x, vectorAim.y) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.GetChild(0).rotation = rotation;
         if (vectorAim != Vector2.zero && canShoot)
         {
             //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
