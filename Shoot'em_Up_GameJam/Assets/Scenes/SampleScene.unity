@@ -231,6 +231,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1075077424700562088, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+        type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075077424700562088, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 30387252306038128, guid: 374feae30c9875f4bbfed3e517d6ae65,
+        type: 3}
+    - target: {fileID: 1075077424700562088, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+        type: 3}
+      propertyPath: spawnBullet
+      value: 
+      objectReference: {fileID: 8025439418796636549}
     - target: {fileID: 8025439418126868033, guid: 00cc1464f7a4e3a469457f463b0c71ac,
         type: 3}
       propertyPath: m_Name
@@ -294,3 +310,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8025439418126868034, guid: 00cc1464f7a4e3a469457f463b0c71ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00cc1464f7a4e3a469457f463b0c71ac, type: 3}
+--- !u!1 &8025439418796636549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3099300770561006393, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 8025439418796636548}
+  m_PrefabAsset: {fileID: 0}

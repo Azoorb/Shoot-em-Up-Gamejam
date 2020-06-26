@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     float speed,fireRate;
     [SerializeField]
-    GameObject bulletPrefab;
+    GameObject bulletPrefab,spawnBullet;
     Collider2D colliderShip;
     
 
@@ -36,8 +36,9 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = rotation;
         if (vectorAim != Vector2.zero && canShoot)
         {
-            //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            //Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
+            GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
+            Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
+            bullet.GetComponent<BulletScript>().SetTarget(vectorAim);
             StartCoroutine(ShootTimer());
         }
     }
