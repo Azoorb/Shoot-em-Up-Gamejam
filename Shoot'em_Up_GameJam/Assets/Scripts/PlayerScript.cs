@@ -11,10 +11,10 @@ public class PlayerScript : MonoBehaviour
     Vector2 vectorMovement,vectorAim;
     bool canShoot = true;
     [SerializeField]
-    float speed,fireRate;
+    float speed = 0,fireRate = 0;
     [SerializeField]
-    GameObject bulletPrefab;
-    Collider2D colliderShip;
+    GameObject bulletPrefab = null;
+    Collider2D colliderShip = null;
     
 
     private void Awake()
