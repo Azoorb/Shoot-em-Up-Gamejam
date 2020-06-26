@@ -11,11 +11,11 @@ public class PlayerScript : MonoBehaviour
     Vector2 vectorMovement,vectorAim;
     bool canShoot = true;
     [SerializeField]
-    float speed = 0,fireRate = 0;
+    float speed ,fireRate,timeAfterNextDash,dashForce;
     [SerializeField]
-
     GameObject bulletPrefab,spawnBullet;
     Collider2D colliderShip;
+    private bool canDash = true;
 
     
 
@@ -27,15 +27,31 @@ public class PlayerScript : MonoBehaviour
         controller.Player.Movement.canceled += ctx => vectorMovement = Vector2.zero;
         controller.Player.Aim.performed += ctx => vectorAim = ctx.ReadValue<Vector2>();
         controller.Player.Aim.canceled += ctx => vectorAim = Vector2.zero;
+        controller.Player.Dash.performed += ctx =>
+        {
+            if (canDash)
+            {
+                Dash();
+            }
+        };
         colliderShip = GetComponent<Collider2D>();
         
     }
 
     private void Update()
     {
-        float angle = Mathf.Atan2(-vectorAim.x, vectorAim.y) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = rotation;
+        if(vectorAim != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(-vectorAim.x, vectorAim.y) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = rotation;
+        }
+        else
+        {
+            float angle = Mathf.Atan2(-vectorMovement.x, vectorMovement.y) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = rotation;
+        }
         if (vectorAim != Vector2.zero && canShoot)
         {
             GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
@@ -58,6 +74,26 @@ public class PlayerScript : MonoBehaviour
         transform.parent.Translate(vectorMovement * speed * Time.deltaTime);
         
         
+    }
+
+    private void Dash()
+    {
+        transform.parent.GetComponent<Rigidbody2D>().AddForce(vectorMovement * dashForce);
+        StartCoroutine(TimerDash(timeAfterNextDash));
+        StartCoroutine(StopDash());
+    }
+
+    private IEnumerator StopDash()
+    {
+        yield return new WaitForSeconds(0.1f);
+        transform.parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
+
+    private IEnumerator TimerDash(float timeAfterNextDash)
+    {
+        canDash = false;
+        yield return new WaitForSeconds(timeAfterNextDash);
+        canDash = true;
     }
 
     private void OnEnable()

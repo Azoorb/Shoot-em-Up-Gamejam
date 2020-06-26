@@ -10,6 +10,8 @@ public class BulletScript : MonoBehaviour
     float speedBullet;
     [SerializeField]
     int damage;
+    [SerializeField]
+    float liveTime;
 
     
     public void SetTarget(Vector2 target)
@@ -18,11 +20,18 @@ public class BulletScript : MonoBehaviour
         float angle = Mathf.Atan2(-target.x, target.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.GetChild(0).rotation = rotation;
+        StartCoroutine(LifeTime(liveTime));
+        
+    }
+
+    private IEnumerator LifeTime(float liveTime)
+    {
+        yield return new WaitForSeconds(liveTime);
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(target);
         transform.Translate(target.normalized * speedBullet * Time.deltaTime);
     }
 

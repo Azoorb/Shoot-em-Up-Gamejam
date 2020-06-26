@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBullet: 10
   damage: 2
+  liveTime: 5
 --- !u!1 &8400736614443068948
 GameObject:
   m_ObjectHideFlags: 0
