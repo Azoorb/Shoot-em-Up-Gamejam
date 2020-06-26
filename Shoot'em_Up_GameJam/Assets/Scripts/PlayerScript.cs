@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     Controller controller;
     Vector2 vectorMovement;
     [SerializeField]
-    float speed;
+    private float speed;
 
     private void Awake()
     {
