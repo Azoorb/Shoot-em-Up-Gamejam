@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: BackgroundTile
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -8787264852723620008, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: -815552602424321265, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: -7367926115001970324, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: -5035860550095137935, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: -4842273378816738804, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: -9139022750145930087, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: 4661332410636905610, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  - {fileID: -3237779017781031316, guid: f7869fc265000fd4682e866de0840ceb, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
