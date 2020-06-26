@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 516796562580811572}
   - component: {fileID: 516796562580811575}
   - component: {fileID: 6043319393272331246}
+  - component: {fileID: 1075077424700562088}
   m_Layer: 0
   m_Name: ShipRenderer
   m_TagString: Untagged
@@ -119,6 +120,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1075077424700562088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516796562580811574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edcb65e7e6645e64e936ea7a4f621069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  fireRate: 0
+  bulletPrefab: {fileID: 0}
 --- !u!1 &8025439418126868033
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +144,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8025439418126868035}
-  - component: {fileID: 8025439418126868034}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -151,18 +166,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8025439418126868034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025439418126868033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edcb65e7e6645e64e936ea7a4f621069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  fireRate: 20
-  bulletPrefab: {fileID: 516796562580811574}

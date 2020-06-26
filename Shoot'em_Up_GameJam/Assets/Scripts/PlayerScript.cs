@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
     {
         float angle = Mathf.Atan2(-vectorAim.x, vectorAim.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.GetChild(0).rotation = rotation;
+        transform.rotation = rotation;
         if (vectorAim != Vector2.zero && canShoot)
         {
             //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(vectorMovement * speed * Time.deltaTime);
+        transform.parent.Translate(vectorMovement * speed * Time.deltaTime);
         
         
     }
