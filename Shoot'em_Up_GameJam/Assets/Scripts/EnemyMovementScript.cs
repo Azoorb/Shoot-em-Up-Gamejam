@@ -21,7 +21,7 @@ public class EnemyMovementScript : MonoBehaviour
         RotateToPlayer();
     }
 
-    private void RotateToPlayer() => transform.right = ship.transform.position - transform.position; //Rotate vers le joueur
+    private void RotateToPlayer() => transform.right = (Vector2)(ship.transform.position - transform.position); //Rotate vers le joueur
 
     private void FixedUpdate() //Se déplacer vers le joueur
     {
