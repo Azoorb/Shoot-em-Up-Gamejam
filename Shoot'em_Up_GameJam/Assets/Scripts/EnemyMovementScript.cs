@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyMovementScript : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 0;
 
     private Rigidbody2D rb;
     private GameObject ship;

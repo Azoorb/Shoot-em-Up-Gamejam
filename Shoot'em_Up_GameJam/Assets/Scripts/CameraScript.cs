@@ -7,7 +7,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
-    GameObject ship;
+    GameObject ship = null;
     void Start()
     {
         
