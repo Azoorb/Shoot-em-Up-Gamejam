@@ -135,8 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   fireRate: 0
-  bulletPrefab: {fileID: 0}
-  spawnBullet: {fileID: 0}
+  bulletPrefab: {fileID: 30387252306038128, guid: 374feae30c9875f4bbfed3e517d6ae65,
+    type: 3}
+  spawnBullet: {fileID: 3099300770561006393}
 --- !u!1 &3099300770561006393
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ GameObject:
   - component: {fileID: 8025439418126868035}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
