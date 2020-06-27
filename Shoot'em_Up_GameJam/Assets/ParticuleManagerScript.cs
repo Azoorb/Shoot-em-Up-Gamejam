@@ -31,6 +31,6 @@ public class ParticuleManagerScript : MonoBehaviour
     public void CreateExplosion(Vector2 position)
     {
         GameObject explo = Instantiate(prefabExplosion, position, Quaternion.identity);
-        Destroy(explo, 0.3f);
+        Destroy(explo, 1f);
     }
 }
