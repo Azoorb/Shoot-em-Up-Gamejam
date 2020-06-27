@@ -12,10 +12,13 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
     private GameObject ship;
     [SerializeField]
     GameObject prefabShoot,spawnShoot;
+    Collider2D colliderEnemy;
     void Start()
     {
+        colliderEnemy = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         ship = GameObject.Find("Ship");
+        
     }
 
     void Update()
@@ -31,7 +34,7 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
     private void Shoot()
     {
         GameObject bullet =  Instantiate(prefabShoot, spawnShoot.transform.position, Quaternion.identity);
-        
+        Physics2D.IgnoreCollision(colliderEnemy, bullet.GetComponent<Collider2D>());
         bullet.GetComponent<BulletEnemyScript>().SetTarget(spawnShoot.transform.position - ship.transform.position);
 
     }
