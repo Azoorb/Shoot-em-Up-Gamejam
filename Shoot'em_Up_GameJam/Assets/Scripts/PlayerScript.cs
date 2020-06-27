@@ -18,7 +18,8 @@ public class PlayerScript : MonoBehaviour
     private bool canDash = true;
     [SerializeField]
     Animator boostAnim;
-
+    [SerializeField]
+    int hp;
     
 
     private void Awake()
@@ -81,6 +82,7 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log("Yo c'est ma position :" + transform.position.normalized);
         transform.parent.Translate(vectorMovement * speed * Time.deltaTime);
         
         
@@ -114,5 +116,10 @@ public class PlayerScript : MonoBehaviour
     private void OnDisable()
     {
         controller.Player.Disable();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
     }
 }
