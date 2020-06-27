@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8741889295447700120}
   - component: {fileID: -2060992408863919753}
   - component: {fileID: 2471271833380389320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShootEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2546466746220166169}
   - component: {fileID: 7317029514684133402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

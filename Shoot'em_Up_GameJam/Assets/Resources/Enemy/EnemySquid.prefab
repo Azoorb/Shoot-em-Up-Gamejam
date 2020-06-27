@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1705863333367848805}
   - component: {fileID: 286734342554022876}
   - component: {fileID: 5867491932817542695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySquid
   m_TagString: Enemy
   m_Icon: {fileID: 0}

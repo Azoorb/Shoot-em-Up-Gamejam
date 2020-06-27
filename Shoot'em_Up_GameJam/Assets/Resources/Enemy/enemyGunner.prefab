@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2864536968503845747}
   - component: {fileID: 2864536968503845744}
   - component: {fileID: 2864536968503845748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemyGunner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2864536969550834225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

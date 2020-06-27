@@ -38,7 +38,8 @@ public class PlayerScript : MonoBehaviour
             }
         };
         colliderShip = GetComponent<Collider2D>();
-        
+        Physics2D.IgnoreLayerCollision(8, 9);
+
     }
 
     private void Update()
