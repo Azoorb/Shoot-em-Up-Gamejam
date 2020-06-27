@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = rotation;
         }
-        else
+        else if(vectorMovement != Vector2.zero)
         {
             float angle = Mathf.Atan2(-vectorMovement.x, vectorMovement.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
