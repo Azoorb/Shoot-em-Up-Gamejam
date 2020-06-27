@@ -41,6 +41,7 @@ public class EnemyMovementScript : MonoBehaviour,IEnemy
 
     private void Died()
     {
+        ParticuleManagerScript.instance.CreateExplosion(transform.position);
         Destroy(gameObject);
     }
 }

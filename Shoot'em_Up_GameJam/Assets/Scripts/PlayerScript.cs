@@ -16,6 +16,8 @@ public class PlayerScript : MonoBehaviour
     GameObject bulletPrefab,spawnBullet;
     Collider2D colliderShip;
     private bool canDash = true;
+    [SerializeField]
+    Animator boostAnim;
 
     
 
@@ -40,6 +42,14 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
+        if(vectorMovement != Vector2.zero)
+        {
+            boostAnim.SetBool("Move", true);
+        }
+        else
+        {
+            boostAnim.SetBool("Move", false);
+        }
         if(vectorAim != Vector2.zero)
         {
             float angle = Mathf.Atan2(-vectorAim.x, vectorAim.y) * Mathf.Rad2Deg;

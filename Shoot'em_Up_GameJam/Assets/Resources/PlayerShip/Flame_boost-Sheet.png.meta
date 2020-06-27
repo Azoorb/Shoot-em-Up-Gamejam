@@ -15,18 +15,6 @@ TextureImporter:
       213: -5023844714383068665
     second: Flame_boost-Sheet_3
   - first:
-      213: -5455172424694894596
-    second: Flame_boost-Sheet_0
-  - first:
-      213: -8116346021332850190
-    second: Flame_boost-Sheet_1
-  - first:
-      213: 6380375017386187833
-    second: Flame_boost-Sheet_2
-  - first:
-      213: -3240820440349047034
-    second: Flame_boost-Sheet_3
-  - first:
       213: 8956665221079693542
     second: Flame_boost-Sheet_4
   - first:
@@ -43,6 +31,36 @@ TextureImporter:
     second: Flame_boost-Sheet_8
   - first:
       213: 2080306151688939212
+    second: Flame_boost-Sheet_9
+  - first:
+      213: -5455172424694894596
+    second: Flame_boost-Sheet_0
+  - first:
+      213: -8116346021332850190
+    second: Flame_boost-Sheet_1
+  - first:
+      213: 6380375017386187833
+    second: Flame_boost-Sheet_2
+  - first:
+      213: -3240820440349047034
+    second: Flame_boost-Sheet_3
+  - first:
+      213: -8247025111890398817
+    second: Flame_boost-Sheet_4
+  - first:
+      213: -202770829020791086
+    second: Flame_boost-Sheet_5
+  - first:
+      213: -6484536011085001629
+    second: Flame_boost-Sheet_6
+  - first:
+      213: 2141570656311910245
+    second: Flame_boost-Sheet_7
+  - first:
+      213: -5808829527875159964
+    second: Flame_boost-Sheet_8
+  - first:
+      213: -8492453883335329894
     second: Flame_boost-Sheet_9
   externalObjects: {}
   serializedVersion: 11
@@ -84,10 +102,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -263,8 +281,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e8fc8a60977c4c70800000000000000
-      internalID: 8956665221079693542
+      spriteID: f91fb08fa5eac8d80800000000000000
+      internalID: -8247025111890398817
       vertices: []
       indices: 
       edges: []
@@ -284,8 +302,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 983e2da791c725ab0800000000000000
-      internalID: -5020814185688013943
+      spriteID: 2de776d510d9f2df0800000000000000
+      internalID: -202770829020791086
       vertices: []
       indices: 
       edges: []
@@ -305,8 +323,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a09d5957b1f925ae0800000000000000
-      internalID: -1562011180458452726
+      spriteID: 36ccc0ebadc4206a0800000000000000
+      internalID: -6484536011085001629
       vertices: []
       indices: 
       edges: []
@@ -326,8 +344,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31fdd12407e91a1a0800000000000000
-      internalID: -6799979757369958637
+      spriteID: 56f1fd65a2368bd10800000000000000
+      internalID: 2141570656311910245
       vertices: []
       indices: 
       edges: []
@@ -347,8 +365,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae318fcad6681db40800000000000000
-      internalID: 5463295628588618730
+      spriteID: 46873362254e26fa0800000000000000
+      internalID: -5808829527875159964
       vertices: []
       indices: 
       edges: []
@@ -368,8 +386,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc6aa7b4c6bbedc10800000000000000
-      internalID: 2080306151688939212
+      spriteID: a973964203eb42a80800000000000000
+      internalID: -8492453883335329894
       vertices: []
       indices: 
       edges: []
