@@ -41,6 +41,7 @@ public class EnemyMovementScript : MonoBehaviour,IEnemy
 
     private void Died()
     {
-        Destroy(gameObject);
+        GetComponent<Animator>().SetBool("Died", true);
+        Destroy(gameObject, 0.54f);
     }
 }
