@@ -24,6 +24,7 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
     void Update()
     {
         RotateToPlayer();
+
         if(readyToShoot && canShoot)
         {
             StartCoroutine(TimerShoot());

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementScript : MonoBehaviour,IEnemy
+public class SquidScript : MonoBehaviour,IEnemy
 {
     [SerializeField] private float speed = 0;
     [SerializeField] private int hp;

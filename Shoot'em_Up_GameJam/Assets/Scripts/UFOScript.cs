@@ -5,9 +5,57 @@ using UnityEngine;
 
 public class UFOScript : MonoBehaviour
 {
+    [SerializeField] private float speed = 0, tpDistToPlayer = 0, tpRate = 0, maxDist = 0;
+    [SerializeField] private int hp;
+
+    private Rigidbody2D rb;
+    private GameObject ship;
+
+    private bool readyTp, wantTp, mustTp;
+
     void Start()
     {
-        //Animation Setup
+        rb = GetComponent<Rigidbody2D>();
+        ship = GameObject.Find("Ship");
+
+        MetasSpriteSetup();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 dir = (ship.transform.position - transform.position).normalized;
+        rb.position += dir * speed * Time.fixedDeltaTime;
+    }
+
+    private void Update()
+    {
+        if (Vector2.Distance(ship.transform.position, transform.position) > maxDist)
+            wantTp = true;
+        else
+            wantTp = false;
+
+        if (readyTp && (wantTp || mustTp))
+        {
+            StartCoroutine(TimerTeleport());
+            Teleport();
+        }
+    }
+
+    private void Teleport()
+    {
+        Vector2 tpVector = new Vector2(Random.Range(-1, 1),Random.Range(-1, 1)).normalized * tpDistToPlayer;
+        rb.position = (Vector2)ship.transform.position + tpVector;
+    }
+
+    private IEnumerator TimerTeleport()
+    {
+        readyTp = false;
+        yield return new WaitForSeconds(tpRate);
+        readyTp = true;
+    }
+
+    private void MetasSpriteSetup()
+    {
         Animator[] animators = GetComponentsInChildren<Animator>();
 
         Debug.Log(animators.Length);
@@ -19,5 +67,20 @@ public class UFOScript : MonoBehaviour
             else
                 Debug.Log(a.gameObject.name);
         }
+    }
+
+    public void TakeDammage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Died();
+        }
+    }
+
+    private void Died()
+    {
+        ParticuleManagerScript.instance.CreateExplosion(transform.position);
+        Destroy(gameObject);
     }
 }
