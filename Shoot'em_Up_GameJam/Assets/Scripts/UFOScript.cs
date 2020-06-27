@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class UFOScript : MonoBehaviour
 {
-    [SerializeField] private float speed = 0, tpDistToPlayer = 0, tpRate = 0, maxDist = 0;
+    [SerializeField] private float speed, tpDistToPlayer, tpRate, maxDist;
     [SerializeField] private int hp;
 
     private Rigidbody2D rb;
     private GameObject ship;
 
-    private bool readyTp, wantTp, mustTp;
+    private bool readyTp = true, wantTp, mustTp;
 
     void Start()
     {
@@ -29,8 +29,11 @@ public class UFOScript : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(ship.transform.position, transform.position) > maxDist)
+        if (Vector2.Distance(ship.transform.position, transform.position) >= maxDist)
+        {
             wantTp = true;
+            Debug.Log("Want TP : " + wantTp);
+        }
         else
             wantTp = false;
 
@@ -39,6 +42,12 @@ public class UFOScript : MonoBehaviour
             StartCoroutine(TimerTeleport());
             Teleport();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.CompareTag("PlayerBullet"))
+            mustTp = true;
     }
 
     private void Teleport()
@@ -50,6 +59,8 @@ public class UFOScript : MonoBehaviour
     private IEnumerator TimerTeleport()
     {
         readyTp = false;
+        wantTp = false;
+        mustTp = false;
         yield return new WaitForSeconds(tpRate);
         readyTp = true;
     }

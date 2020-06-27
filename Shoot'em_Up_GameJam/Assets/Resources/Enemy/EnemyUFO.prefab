@@ -214,6 +214,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8369006561206507094}
   - component: {fileID: 8369006561206507095}
+  - component: {fileID: -2010675959274913246}
+  - component: {fileID: 1969232778955993538}
+  - component: {fileID: 1623873949068995318}
   m_Layer: 0
   m_Name: EnemyUFO
   m_TagString: Untagged
@@ -249,3 +252,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770f824a40d11804d801b257e1b05ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
+  tpDistToPlayer: 3.5
+  tpRate: 4
+  maxDist: 4
+  hp: 10
+--- !u!50 &-2010675959274913246
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369006561206507092}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!70 &1969232778955993538
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369006561206507092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.12}
+  m_Size: {x: 1.75, y: 0.75}
+  m_Direction: 1
+--- !u!58 &1623873949068995318
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369006561206507092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.75
