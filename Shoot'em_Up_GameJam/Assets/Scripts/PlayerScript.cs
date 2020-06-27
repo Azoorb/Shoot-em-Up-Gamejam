@@ -53,24 +53,34 @@ public class PlayerScript : MonoBehaviour
         }
         if(vectorAim != Vector2.zero)
         {
-            float angle = Mathf.Atan2(-vectorAim.x, vectorAim.y) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = rotation;
+            MakeRotation(vectorAim);
         }
         else if(vectorMovement != Vector2.zero)
         {
-            float angle = Mathf.Atan2(-vectorMovement.x, vectorMovement.y) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = rotation;
+            MakeRotation(vectorMovement);
         }
         if (vectorAim != Vector2.zero && canShoot)
         {
-            GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
-            Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
-            bullet.GetComponent<BulletScript>().SetTarget(vectorAim);
-            StartCoroutine(ShootTimer());
+            Shoot();
         }
+        
     }
+
+    private void MakeRotation(Vector2 vector)
+    {
+        float angle = Mathf.Atan2(-vector.x, vector.y) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = rotation;
+    }
+
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
+        Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
+        bullet.GetComponent<BulletScript>().SetTarget(vectorAim);
+        StartCoroutine(ShootTimer());
+    }
+
 
     private IEnumerator ShootTimer()
     {
@@ -82,7 +92,6 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Yo c'est ma position :" + transform.position.normalized);
         transform.parent.Translate(vectorMovement * speed * Time.deltaTime);
         
         

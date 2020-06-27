@@ -31,7 +31,6 @@ public class BulletEnemyScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Yo c'est ma target :" + target);
         transform.Translate(-target.normalized * speedBullet * Time.deltaTime);
     }
 
