@@ -6,7 +6,9 @@ public class ParticuleManagerScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    GameObject prefabExplosion;
+    GameObject explosionParticules,explosionSprites;
+    [SerializeField]
+    bool explosionWithParticules;
 
     public static ParticuleManagerScript instance;
 
@@ -30,7 +32,16 @@ public class ParticuleManagerScript : MonoBehaviour
 
     public void CreateExplosion(Vector2 position)
     {
-        GameObject explo = Instantiate(prefabExplosion, position, Quaternion.identity);
-        Destroy(explo, 1f);
+        if(explosionWithParticules)
+        {
+            GameObject explo = Instantiate(explosionParticules, position, Quaternion.identity);
+            Destroy(explo, 1f);
+        }
+        else
+        {
+            GameObject explo = Instantiate(explosionSprites, position, Quaternion.identity);
+            Destroy(explo, 0.3f);
+        }
+        
     }
 }
