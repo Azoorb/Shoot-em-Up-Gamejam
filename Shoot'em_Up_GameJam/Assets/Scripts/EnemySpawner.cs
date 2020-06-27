@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab = null;
+    [SerializeField] private GameObject[] enemyPrefabs = null;
 
     [SerializeField] private float spawnRate = 0;
     private float _rate = 0.5f;
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
                     break;
             }
 
-            GameObject e = Instantiate(enemyPrefab, (Vector2)transform.position + spawnPos, Quaternion.identity);
+            GameObject e = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], (Vector2)transform.position + spawnPos, Quaternion.identity);
 
             _rate = spawnRate;
         }

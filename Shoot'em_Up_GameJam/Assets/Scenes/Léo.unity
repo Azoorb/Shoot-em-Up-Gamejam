@@ -224,8 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c823ca03d9ba745a0eea3532cd3e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7369723757000909014, guid: 60fa6a709315ab346a6750622e49480d,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: 7369723757000909014, guid: 60fa6a709315ab346a6750622e49480d, type: 3}
+  - {fileID: 2864536968503845745, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9, type: 3}
+  - {fileID: 8369006561206507092, guid: 350647967dabb744298a51fb97419ad3, type: 3}
   spawnRate: 2
 --- !u!4 &964629376
 Transform:
@@ -544,8 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455b69b787029c4591009942edf9a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabExplosion: {fileID: 7115198356366093001, guid: 33c2e324dd4afec4c92078f56c4e10d7,
-    type: 3}
+  explosionParticules: {fileID: 0}
+  explosionSprites: {fileID: 0}
+  explosionWithParticules: 0
 --- !u!4 &1921405005
 Transform:
   m_ObjectHideFlags: 0
