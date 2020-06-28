@@ -35,7 +35,7 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
     private void Shoot()
     {
         GameObject bullet =  Instantiate(prefabShoot, spawnShoot.transform.position, Quaternion.identity);
-        Physics2D.IgnoreCollision(colliderEnemy, bullet.GetComponent<Collider2D>());
+        
         bullet.GetComponent<BulletEnemyScript>().SetTarget(spawnShoot.transform.position - ship.transform.position);
 
     }
