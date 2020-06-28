@@ -6,7 +6,7 @@ public class LevelScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    public List<GameObject> setCard { get => _setCard; }
+    public List<GameObject> setCard { get; /*=> _setCard;*/ }
     void Start()
     {
         
