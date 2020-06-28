@@ -35,7 +35,9 @@ public class UFOScript : MonoBehaviour
             Debug.Log("Want TP : " + wantTp);
         }
         else
+        {
             wantTp = false;
+        }
 
         if (readyTp && (wantTp || mustTp))
         {
@@ -47,7 +49,9 @@ public class UFOScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D c)
     {
         if (c.gameObject.CompareTag("PlayerBullet"))
+        {
             mustTp = true;
+        }
     }
 
     private void Teleport()
@@ -75,8 +79,6 @@ public class UFOScript : MonoBehaviour
         {
             if (a.gameObject.name == "Left")
                 a.SetBool("Left", true);
-            else
-                Debug.Log(a.gameObject.name);
         }
     }
 
