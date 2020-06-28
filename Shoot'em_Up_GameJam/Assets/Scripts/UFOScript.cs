@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class UFOScript : MonoBehaviour
+public class UFOScript : MonoBehaviour, IEnemy
 {
     [SerializeField] private float speed, tpDistToPlayer, tpRate, maxDist;
     [SerializeField] private int hp;
@@ -32,7 +32,6 @@ public class UFOScript : MonoBehaviour
         if (Vector2.Distance(ship.transform.position, transform.position) >= maxDist)
         {
             wantTp = true;
-            Debug.Log("Want TP : " + wantTp);
         }
         else
         {
@@ -85,6 +84,7 @@ public class UFOScript : MonoBehaviour
     public void TakeDammage(int damage)
     {
         hp -= damage;
+
         if (hp <= 0)
         {
             Died();

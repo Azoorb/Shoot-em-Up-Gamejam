@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 1623873949068995318}
   m_Layer: 0
   m_Name: EnemyUFO
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,11 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770f824a40d11804d801b257e1b05ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  tpDistToPlayer: 3.5
-  tpRate: 4
-  maxDist: 4
-  hp: 10
+  speed: 2.5
+  tpDistToPlayer: 4.5
+  tpRate: 5
+  maxDist: 6.5
+  hp: 3
 --- !u!50 &-2010675959274913246
 Rigidbody2D:
   serializedVersion: 4

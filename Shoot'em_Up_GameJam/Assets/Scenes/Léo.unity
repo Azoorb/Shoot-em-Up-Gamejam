@@ -1047,10 +1047,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5455b69b787029c4591009942edf9a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionParticules: {fileID: 0}
+  explosionParticules: {fileID: 2432770111658098968, guid: 3c5a7d07da9ce0149975bbf15da1d0d9,
+    type: 3}
   explosionSprites: {fileID: 1230983163034799779, guid: be5db932be9857c4ca070112c9b8c5ea,
     type: 3}
-  explosionWithParticules: 0
+  explosionWithParticules: 1
 --- !u!4 &1921405005
 Transform:
   m_ObjectHideFlags: 0
