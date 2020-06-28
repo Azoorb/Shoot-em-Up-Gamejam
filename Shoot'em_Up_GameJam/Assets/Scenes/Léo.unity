@@ -388,7 +388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &692649040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,7 +1205,7 @@ MonoBehaviour:
     type: 3}
   explosionSprites: {fileID: 1230983163034799779, guid: be5db932be9857c4ca070112c9b8c5ea,
     type: 3}
-  explosionWithParticules: 1
+  explosionWithParticules: 0
 --- !u!4 &1921405005
 Transform:
   m_ObjectHideFlags: 0

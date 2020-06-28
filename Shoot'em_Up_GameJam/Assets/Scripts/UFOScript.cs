@@ -29,6 +29,7 @@ public class UFOScript : MonoBehaviour, IEnemy
 
     private void Update()
     {
+        RotateToPlayer();
         if (Vector2.Distance(ship.transform.position, transform.position) >= maxDist)
         {
             wantTp = true;
@@ -44,6 +45,8 @@ public class UFOScript : MonoBehaviour, IEnemy
             Teleport();
         }
     }
+
+    private void RotateToPlayer() => transform.up = (Vector2)(ship.transform.position - transform.position); //Rotate vers le joueur
 
     private void OnTriggerEnter2D(Collider2D c)
     {
