@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class LevelScript : MonoBehaviour
+public interface IUpgrade 
 {
-    public List<GameObject> setCard;
-
-    
+    void UpgradePlayer();
 }

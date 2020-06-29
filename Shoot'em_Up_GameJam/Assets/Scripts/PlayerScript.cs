@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     Vector2 vectorMovement,vectorAim;
     bool canShoot = true, canLazer = false;
     [SerializeField]
-    float speed ,fireRate,lazerRate,lazerTime,timeAfterNextDash,dashForce;
+    public float speed ,fireRate,lazerRate,lazerTime,timeAfterNextDash,dashForce;
     [SerializeField]
     GameObject bulletPrefab,lazerPrefab,spawnBullet;
     Collider2D colliderShip;
@@ -62,7 +62,9 @@ public class PlayerScript : MonoBehaviour
         }
         if (vectorAim != Vector2.zero && canShoot)
         {
+            //LevelManager.instance.GainLevel();
             Shoot();
+            
         }
         
     }
@@ -94,6 +96,7 @@ public class PlayerScript : MonoBehaviour
         canShoot = false;
         canLazer = false;
         yield return new WaitForSeconds(fireRate);
+        canShoot = true;
         canLazer = true;
     }
 
