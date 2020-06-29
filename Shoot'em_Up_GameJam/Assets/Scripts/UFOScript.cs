@@ -6,7 +6,7 @@ using UnityEngine;
 public class UFOScript : MonoBehaviour, IEnemy
 {
     [SerializeField] private float speed, tpDistToPlayer, tpRate, maxDist;
-    [SerializeField] private int hp;
+    [SerializeField] private int hp, expDrop;
 
     private Rigidbody2D rb;
     private GameObject ship;
@@ -97,6 +97,7 @@ public class UFOScript : MonoBehaviour, IEnemy
     private void Died()
     {
         ParticuleManagerScript.instance.CreateExplosion(transform.position);
+        SliderManager.instance.GainExp(expDrop);
         Destroy(gameObject);
     }
 }

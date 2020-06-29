@@ -6,7 +6,7 @@ using UnityEngine;
 public class SquidScript : MonoBehaviour,IEnemy
 {
     [SerializeField] private float speed = 0;
-    [SerializeField] private int hp;
+    [SerializeField] private int hp, expDrop;
 
     private Rigidbody2D rb;
     private GameObject ship;
@@ -42,6 +42,7 @@ public class SquidScript : MonoBehaviour,IEnemy
     private void Died()
     {
         ParticuleManagerScript.instance.CreateExplosion(transform.position);
+        SliderManager.instance.GainExp(expDrop);
         Destroy(gameObject);
 
     }

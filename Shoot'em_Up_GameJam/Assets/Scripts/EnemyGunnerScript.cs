@@ -6,7 +6,7 @@ using UnityEngine.PlayerLoop;
 public class EnemyGunnerScript : MonoBehaviour,IEnemy
 {
     [SerializeField] private float speed,minDistance,fireRate;
-    [SerializeField] private int hp;
+    [SerializeField] private int hp,expDrop;
     private bool readyToShoot = true,canShoot;
     private Rigidbody2D rb;
     private GameObject ship;
@@ -78,6 +78,7 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
     private void Died()
     {
         ParticuleManagerScript.instance.CreateExplosion(transform.position);
+        SliderManager.instance.GainExp(expDrop);
         Destroy(gameObject);
 
     }

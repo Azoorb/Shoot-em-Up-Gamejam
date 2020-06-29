@@ -62,7 +62,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (vectorAim != Vector2.zero && canShoot)
         {
-            LevelManager.instance.GainLevel();
+            //LevelManager.instance.GainLevel();
             Shoot();
             
         }
