@@ -75,7 +75,7 @@ public class UFOScript : MonoBehaviour, IEnemy
     {
         Animator[] animators = GetComponentsInChildren<Animator>();
 
-        Debug.Log(animators.Length);
+        //Debug.Log(animators.Length);
 
         foreach (Animator a in animators)
         {

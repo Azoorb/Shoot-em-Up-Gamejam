@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Net;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ public class LevelManager : MonoBehaviour
     List<GameObject> setCardList;
     [SerializeField]
     List<GameObject> cardPlaceList;
+    [SerializeField]
+    GameObject panelUpgrade;
+    List<GameObject> listCardChoosen;
     private void Awake()
     {
         
@@ -23,6 +27,8 @@ public class LevelManager : MonoBehaviour
 
     public void GainLevel()
     {
+        panelUpgrade.SetActive(true);
+        Time.timeScale = 0;
         List<int> listIndexSetCardSelected = new List<int>();
         for(int counter = 0;counter < 3 && counter< setCardList.Count;counter++)
         {
@@ -33,32 +39,42 @@ public class LevelManager : MonoBehaviour
             }
             listIndexSetCardSelected.Add(randomSetCard);
         }
-        List<GameObject> listCardChoosen = new List<GameObject>();
+        listCardChoosen = new List<GameObject>();
         foreach(int setCardIndex in listIndexSetCardSelected)
         {
             listCardChoosen.Add(setCardList[setCardIndex]);
         }
 
+        for(int i = 2; i >= listCardChoosen.Count;i-- )
+        {
+            cardPlaceList[i].SetActive(false);
+        }
         for(int i =0;i<listCardChoosen.Count;i++)
         {
+            Debug.Log("Yo : " + i);
             cardPlaceList[i].transform.GetChild(0).GetComponent<Image>().sprite = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().miniatureSprite;
-            cardPlaceList[i].transform.GetChild(1).GetComponent<Text>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().description;
-            cardPlaceList[i].transform.GetChild(2).GetComponent<Text>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().attributs;
+            cardPlaceList[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().description;
+            cardPlaceList[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().attributs;
+            GameObject card = listCardChoosen[i];
+            cardPlaceList[i].transform.GetChild(3).GetComponent<Button>().onClick.RemoveAllListeners();
+            cardPlaceList[i].transform.GetChild(3).GetComponent<Button>().onClick.AddListener(delegate { ChooseUpgrade(card); } ) ;
         }
-
-        //ChooseUpgrade(listCardChoosen[0]);
 
 
     }
+
+    
 
     public void ChooseUpgrade(GameObject setCard)
     {
         setCard.GetComponent<LevelScript>().setCard[0].GetComponent<IUpgrade>().UpgradePlayer();
         setCard.GetComponent<LevelScript>().setCard.RemoveAt(0);
-        if(setCard.GetComponent<LevelScript>().setCard.Count == 0)
+        if (setCard.GetComponent<LevelScript>().setCard.Count == 0)
         {
             setCardList.Remove(setCard);
 
         }
+        panelUpgrade.SetActive(false);
+        Time.timeScale = 1;
     }
 }

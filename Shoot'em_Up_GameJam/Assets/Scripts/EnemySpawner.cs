@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
         if (_rate <= 0f)
         {
             int spawnSide = Random.Range(0, 4); //Choix de là ou l'ennemi arrive (NSEO)
-            Debug.Log(spawnSide);
+            //Debug.Log(spawnSide);
 
             Vector2 spawnPos = new Vector2(0f, 0f);
 
