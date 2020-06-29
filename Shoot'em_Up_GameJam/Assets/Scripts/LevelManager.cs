@@ -45,9 +45,8 @@ public class LevelManager : MonoBehaviour
             cardPlaceList[i].transform.GetChild(1).GetComponent<Text>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().description;
             cardPlaceList[i].transform.GetChild(2).GetComponent<Text>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().attributs;
         }
-        upgradePlace1.transform.GetChild(0).GetComponent<Image>().sprite = listCardChoosen
 
-        ChooseUpgrade(listCardChoosen[0]);
+        //ChooseUpgrade(listCardChoosen[0]);
 
 
     }
