@@ -6,7 +6,6 @@ public class LaserScript : MonoBehaviour
 {
     [SerializeField] private GameObject laserBody;
     [SerializeField] private int bodyLength;
-    private int remainingLength;
     public bool instantiateBody = false;
 
     void Start()
@@ -20,7 +19,7 @@ public class LaserScript : MonoBehaviour
         {
             GameObject b = Instantiate(laserBody, transform);
             b.transform.right = transform.right;
-            b.transform.position = transform.right * bodyLength;
+            b.transform.localPosition = transform.up * -bodyLength;
 
             bodyLength--;
         }
