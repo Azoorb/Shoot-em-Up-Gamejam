@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8369006559900872163}
   - component: {fileID: 8369006559900872173}
   - component: {fileID: 8369006559900872162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8369006560683283713}
   - component: {fileID: 8369006560683283715}
   - component: {fileID: 8369006560683283712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: -2010675959274913246}
   - component: {fileID: 1969232778955993538}
   - component: {fileID: 1623873949068995318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyUFO
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   freezeDuration: 5
+  burnDuration: 2
   hp: 3
   expDrop: 5
   tpDistToPlayer: 4.5

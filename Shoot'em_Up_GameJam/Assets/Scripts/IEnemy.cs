@@ -6,4 +6,6 @@ public interface IEnemy
 {
     void TakeDammage(int damage);
     void Freeze();
+
+    void Burn();
 }

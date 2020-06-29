@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   freezeDuration: 2
+  burnDuration: 2
   hp: 1
   expDrop: 2
   minDistance: 5

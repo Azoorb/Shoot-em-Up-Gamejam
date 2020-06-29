@@ -69,6 +69,10 @@ public class BulletScript : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<IEnemy>().Freeze();
                 }
+                if(fire)
+                {
+                    collision.gameObject.GetComponent<IEnemy>().Burn();
+                }
                 collision.gameObject.GetComponent<IEnemy>().TakeDammage(damage+ GameObject.Find("ShipRenderer").GetComponent<PlayerScript>().damageBonus);
             }
             Destroy(gameObject);

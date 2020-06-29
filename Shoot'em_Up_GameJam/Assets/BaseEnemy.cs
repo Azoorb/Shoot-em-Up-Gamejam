@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour, IEnemy
 {
-    [SerializeField] protected float speed = 0,freezeDuration;
+    [SerializeField] protected float speed = 0,freezeDuration,burnDuration;
     [SerializeField] protected int hp, expDrop;
-    protected bool freeze;
+    protected bool freeze = false,burn = false ;
     protected Rigidbody2D rb;
     protected GameObject ship;
+    private float tickBurn = 1f;
 
     protected virtual void Start()
     {
@@ -53,6 +54,32 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     public void Freeze()
     {
         StartCoroutine(FreezeTimer());
+    }
+
+    public void Burn()
+    {
+        if(!burn)
+        {
+            burn = true;
+            StartCoroutine(BurnTimer(burnDuration));
+            
+        }
+        
+    }
+
+    public IEnumerator BurnTimer(float burnDurationLeft)
+    {
+        yield return new WaitForSeconds(tickBurn);
+        burnDurationLeft -= tickBurn;
+        if(burnDurationLeft > 0)
+        {
+            StartCoroutine(BurnTimer(burnDurationLeft));
+            this.TakeDammage(1);
+        }
+        else
+        {
+            burn = false;
+        }
     }
     public IEnumerator FreezeTimer()
     {
