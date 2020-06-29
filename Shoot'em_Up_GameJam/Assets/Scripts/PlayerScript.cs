@@ -9,11 +9,11 @@ public class PlayerScript : MonoBehaviour
 {
     Controller controller;
     Vector2 vectorMovement,vectorAim;
-    bool canShoot = true, canLazer = false;
+    bool canShoot = true, canLaser = false;
     [SerializeField]
-    float speed ,fireRate,lazerRate,lazerTime,timeAfterNextDash,dashForce;
+    float speed ,fireRate,laserRate,laserTime,timeAfterNextDash,dashForce;
     [SerializeField]
-    GameObject bulletPrefab,lazerPrefab,spawnBullet;
+    GameObject bulletPrefab,laserPrefab,spawnBullet;
     Collider2D colliderShip;
     private bool canDash = true;
     [SerializeField]
@@ -35,6 +35,13 @@ public class PlayerScript : MonoBehaviour
             if (canDash)
             {
                 Dash();
+            }
+        };
+        controller.Player.Laser.performed += ctx =>
+        {
+            if (canLaser)
+            {
+                Laser();
             }
         };
         colliderShip = GetComponent<Collider2D>();
@@ -64,7 +71,6 @@ public class PlayerScript : MonoBehaviour
         {
             Shoot();
         }
-        
     }
 
     private void MakeRotation(Vector2 vector)
@@ -82,29 +88,31 @@ public class PlayerScript : MonoBehaviour
         StartCoroutine(ShootTimer());
     }
 
-    private void Lazer()
+    private void Laser()
     {
-        GameObject lazer = Instantiate(lazerPrefab, spawnBullet.transform);
-        StartCoroutine(LazerTimer());
+        GameObject laser = Instantiate(laserPrefab, spawnBullet.transform);
+        StartCoroutine(LaserTimer());
     }
 
 
     private IEnumerator ShootTimer()
     {
         canShoot = false;
-        canLazer = false;
+        canLaser = false;
         yield return new WaitForSeconds(fireRate);
-        canLazer = true;
+        canShoot = true;
+        canLaser = true;
+        
     }
 
-    private IEnumerator LazerTimer()
+    private IEnumerator LaserTimer()
     {
         canShoot = false;
-        canLazer = false;
-        yield return new WaitForSeconds(lazerTime);
+        canLaser = false;
+        yield return new WaitForSeconds(laserTime);
         canShoot = true;
-        yield return new WaitForSeconds(lazerRate);
-        canLazer = true;
+        yield return new WaitForSeconds(laserRate);
+        canLaser = true;
     }
 
 
