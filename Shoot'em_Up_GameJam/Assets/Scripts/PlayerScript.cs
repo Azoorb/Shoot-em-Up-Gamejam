@@ -9,11 +9,11 @@ public class PlayerScript : MonoBehaviour
 {
     Controller controller;
     Vector2 vectorMovement,vectorAim;
-    bool canShoot = true, canLazer = false;
+    bool canShoot = true, canLaser = false;
     [SerializeField]
-    public float speed ,fireRate,lazerRate,lazerTime,timeAfterNextDash,dashForce;
+    public float speed ,fireRate,laserRate,laserTime,timeAfterNextDash,dashForce;
     [SerializeField]
-    GameObject bulletPrefab,lazerPrefab,spawnBullet;
+    GameObject bulletPrefab,laserPrefab,spawnBullet;
     Collider2D colliderShip;
     private bool canDash = true;
     [SerializeField]
@@ -86,28 +86,28 @@ public class PlayerScript : MonoBehaviour
 
     private void Lazer()
     {
-        GameObject lazer = Instantiate(lazerPrefab, spawnBullet.transform);
-        StartCoroutine(LazerTimer());
+        GameObject laser = Instantiate(laserPrefab, spawnBullet.transform);
+        StartCoroutine(LaserTimer());
     }
 
 
     private IEnumerator ShootTimer()
     {
         canShoot = false;
-        canLazer = false;
+        canLaser = false;
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
-        canLazer = true;
+        canLaser = true;
     }
 
-    private IEnumerator LazerTimer()
+    private IEnumerator LaserTimer()
     {
         canShoot = false;
-        canLazer = false;
-        yield return new WaitForSeconds(lazerTime);
+        canLaser = false;
+        yield return new WaitForSeconds(laserTime);
         canShoot = true;
-        yield return new WaitForSeconds(lazerRate);
-        canLazer = true;
+        yield return new WaitForSeconds(laserRate);
+        canLaser = true;
     }
 
 
