@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUpgrade : MonoBehaviour, IUpgrade
+public class SpeedUpgrade : UpgradeBase, IUpgrade
 {
     [SerializeField]
     float speedUp;

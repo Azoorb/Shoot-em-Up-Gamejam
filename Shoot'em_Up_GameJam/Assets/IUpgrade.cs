@@ -3,6 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IUpgrade 
-{
-    void UpgradePlayer();
+{    void UpgradePlayer();
 }

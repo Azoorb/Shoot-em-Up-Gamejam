@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Net;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,9 +11,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     List<GameObject> setCardList;
     [SerializeField]
-    GameObject upgradePlace1, upgradePlace2, upgradePlace3;
+    List<GameObject> cardPlaceList;
     private void Awake()
     {
+        
         if (instance == null)
         {
             instance = this;
@@ -36,7 +39,13 @@ public class LevelManager : MonoBehaviour
             listCardChoosen.Add(setCardList[setCardIndex]);
         }
 
-        //Ici changer le texte, la miniature et les attributs
+        for(int i =0;i<listCardChoosen.Count;i++)
+        {
+            cardPlaceList[i].transform.GetChild(0).GetComponent<Image>().sprite = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().miniatureSprite;
+            cardPlaceList[i].transform.GetChild(1).GetComponent<Text>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().description;
+            cardPlaceList[i].transform.GetChild(2).GetComponent<Text>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().attributs;
+        }
+        upgradePlace1.transform.GetChild(0).GetComponent<Image>().sprite = listCardChoosen
 
         ChooseUpgrade(listCardChoosen[0]);
 
