@@ -64,6 +64,9 @@ MonoBehaviour:
   speedBullet: 10
   damage: 2
   liveTime: 5
+  normalBulletSprite: {fileID: 21300000, guid: 70caf0fefed245b41add8be2c5eed14e, type: 3}
+  fireBulletSprite: {fileID: 21300000, guid: cfabc40a058a772458704dbe10679187, type: 3}
+  iceBulletSprite: {fileID: 21300000, guid: 3a8809572d5c8b84faa091b4df15526b, type: 3}
 --- !u!1 &8400736614443068948
 GameObject:
   m_ObjectHideFlags: 0

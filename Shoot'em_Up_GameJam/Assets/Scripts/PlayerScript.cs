@@ -1,9 +1,10 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerScript : MonoBehaviour
     bool canShoot = true, canLaser = false;
     [SerializeField]
     public float speed ,fireRate,laserRate,laserTime,timeAfterNextDash,dashForce;
+    public int damageBonus;
+    public float freezeProbabily = 0,fireProbabily = 0;
     [SerializeField]
     GameObject bulletPrefab,laserPrefab,spawnBullet;
     Collider2D colliderShip;
@@ -80,7 +83,7 @@ public class PlayerScript : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
         Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
-        bullet.GetComponent<BulletScript>().SetTarget(vectorAim);
+        bullet.GetComponent<BulletScript>().InitializeBullet(vectorAim, CheckShootState(freezeProbabily), CheckShootState(fireProbabily));
         StartCoroutine(ShootTimer());
     }
 
@@ -136,6 +139,19 @@ public class PlayerScript : MonoBehaviour
         canDash = false;
         yield return new WaitForSeconds(timeAfterNextDash);
         canDash = true;
+    }
+
+    private bool CheckShootState(float probabilty)
+    {
+        float randomProbabily = Random.Range(0f, 1f);
+        if(randomProbabily<probabilty)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void OnEnable()

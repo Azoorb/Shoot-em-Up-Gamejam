@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    [SerializeField]
     List<GameObject> setCardList;
     [SerializeField]
     List<GameObject> cardPlaceList;
@@ -22,6 +21,11 @@ public class LevelManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+        }
+        setCardList = new List<GameObject>();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            setCardList.Add(transform.GetChild(i).gameObject);
         }
     }
 

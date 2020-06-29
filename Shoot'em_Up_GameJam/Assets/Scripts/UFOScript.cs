@@ -3,33 +3,25 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class UFOScript : MonoBehaviour, IEnemy
+public class UFOScript : BaseEnemy
 {
-    [SerializeField] private float speed, tpDistToPlayer, tpRate, maxDist;
-    [SerializeField] private int hp, expDrop;
+    [SerializeField] private float tpDistToPlayer, tpRate, maxDist;
 
-    private Rigidbody2D rb;
-    private GameObject ship;
 
     private bool readyTp = true, wantTp, mustTp;
 
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        ship = GameObject.Find("Ship");
+        base.Start();
 
         MetasSpriteSetup();
     }
 
-    private void FixedUpdate()
-    {
-        Vector2 dir = (ship.transform.position - transform.position).normalized;
-        rb.position += dir * speed * Time.fixedDeltaTime;
-    }
 
-    private void Update()
+
+    protected override void Update()
     {
-        RotateToPlayer();
+        base.Update();
         if (Vector2.Distance(ship.transform.position, transform.position) >= maxDist)
         {
             wantTp = true;
@@ -39,14 +31,16 @@ public class UFOScript : MonoBehaviour, IEnemy
             wantTp = false;
         }
 
-        if (readyTp && (wantTp || mustTp))
+        if (readyTp && (wantTp || mustTp) && !freeze)
         {
             StartCoroutine(TimerTeleport());
             Teleport();
         }
     }
 
-    private void RotateToPlayer() => transform.up = (Vector2)(ship.transform.position - transform.position); //Rotate vers le joueur
+    protected override void RotateToPlayer() => transform.up = (Vector2) (ship.transform.position - transform.position);
+
+
 
     private void OnTriggerEnter2D(Collider2D c)
     {
@@ -84,20 +78,5 @@ public class UFOScript : MonoBehaviour, IEnemy
         }
     }
 
-    public void TakeDammage(int damage)
-    {
-        hp -= damage;
 
-        if (hp <= 0)
-        {
-            Died();
-        }
-    }
-
-    private void Died()
-    {
-        ParticuleManagerScript.instance.CreateExplosion(transform.position);
-        SliderManager.instance.GainExp(expDrop);
-        Destroy(gameObject);
-    }
 }

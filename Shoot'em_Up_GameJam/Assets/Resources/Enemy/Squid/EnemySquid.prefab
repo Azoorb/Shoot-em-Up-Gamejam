@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  freezeDuration: 2
   hp: 1
   expDrop: 1
 --- !u!61 &5867491932817542695

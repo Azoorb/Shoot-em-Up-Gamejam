@@ -12,6 +12,30 @@ public class BulletScript : MonoBehaviour
     int damage;
     [SerializeField]
     float liveTime;
+    [SerializeField]
+    Sprite normalBulletSprite, fireBulletSprite, iceBulletSprite;
+    bool ice, fire;
+
+    public void InitializeBullet(Vector2 target,bool ice,bool fire)
+    {
+        SpriteRenderer spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        this.ice = ice;
+        this.fire = fire;
+        if(ice)
+        {
+            spriteRenderer.sprite = iceBulletSprite;
+        }
+        else if(fire)
+        {
+            spriteRenderer.sprite = fireBulletSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = normalBulletSprite;
+        }
+
+        SetTarget(target);
+    }
 
     
     public void SetTarget(Vector2 target)
@@ -41,7 +65,11 @@ public class BulletScript : MonoBehaviour
         {
             if (collision.collider.CompareTag("Enemy"))
             {
-                collision.gameObject.GetComponent<IEnemy>().TakeDammage(damage);
+                if(ice)
+                {
+                    collision.gameObject.GetComponent<IEnemy>().Freeze();
+                }
+                collision.gameObject.GetComponent<IEnemy>().TakeDammage(damage+ GameObject.Find("ShipRenderer").GetComponent<PlayerScript>().damageBonus);
             }
             Destroy(gameObject);
         }

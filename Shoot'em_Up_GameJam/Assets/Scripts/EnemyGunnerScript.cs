@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class EnemyGunnerScript : MonoBehaviour,IEnemy
+public class EnemyGunnerScript : BaseEnemy
 {
-    [SerializeField] private float speed,minDistance,fireRate;
-    [SerializeField] private int hp,expDrop;
-    private bool readyToShoot = true,canShoot;
-    private Rigidbody2D rb;
-    private GameObject ship;
+    [SerializeField] private float minDistance, fireRate;
+    private bool readyToShoot = true, canShoot;
     [SerializeField]
-    GameObject prefabShoot,spawnShoot;
+    GameObject prefabShoot, spawnShoot;
     Collider2D colliderEnemy;
-    void Start()
+
+    protected override void Start()
     {
+        base.Start();
         colliderEnemy = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
-        ship = GameObject.Find("Ship");
-        
+
     }
 
-    void Update()
+    protected override void Update()
     {
-        RotateToPlayer();
-
-        if(readyToShoot && canShoot)
+        base.Update();
+        if (readyToShoot && canShoot)
         {
             StartCoroutine(TimerShoot());
             Shoot();
@@ -34,8 +30,8 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
 
     private void Shoot()
     {
-        GameObject bullet =  Instantiate(prefabShoot, spawnShoot.transform.position, Quaternion.identity);
-        
+        GameObject bullet = Instantiate(prefabShoot, spawnShoot.transform.position, Quaternion.identity);
+
         bullet.GetComponent<BulletEnemyScript>().SetTarget(spawnShoot.transform.position - ship.transform.position);
 
     }
@@ -46,41 +42,28 @@ public class EnemyGunnerScript : MonoBehaviour,IEnemy
         readyToShoot = true;
     }
 
-    private void RotateToPlayer() => transform.right = (Vector2)(ship.transform.position - transform.position); //Rotate vers le joueur
 
-    private void FixedUpdate() //Se déplacer vers le joueur
+
+
+    protected override void FixedUpdate() //Se déplacer vers le joueur
     {
-        
+
         if (Vector2.Distance(ship.transform.position, transform.position) > minDistance)
         {
-            Vector2 dir = (ship.transform.position - transform.position).normalized;
-            rb.position += dir * speed * Time.fixedDeltaTime;
+            base.FixedUpdate();
             canShoot = false;
         }
         else
         {
             canShoot = true;
         }
-   
-        
-    }
 
-
-    public void TakeDammage(int damage)
-    {
-        hp -= damage;
-        if (hp <= 0)
-        {
-            Died();
-        }
-    }
-
-    private void Died()
-    {
-        ParticuleManagerScript.instance.CreateExplosion(transform.position);
-        SliderManager.instance.GainExp(expDrop);
-        Destroy(gameObject);
 
     }
 }
+
+
+    
+
+    
 
