@@ -319,75 +319,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00cc1464f7a4e3a469457f463b0c71ac, type: 3}
---- !u!1001 &1404250468
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2729739557479582045, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_Name
-      value: LaserPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4684352568320788396, guid: 94c07b66812316d4fbfb0d3c67a495a0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 94c07b66812316d4fbfb0d3c67a495a0, type: 3}
 --- !u!1001 &1404133674288597506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -395,10 +326,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 574909991721496029, guid: 646af9c4b529b584ea93bfac9592341e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2032924357483332330, guid: 646af9c4b529b584ea93bfac9592341e,
         type: 3}
       propertyPath: m_Name
       value: P-40 Warhawk
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703492055446509357, guid: 646af9c4b529b584ea93bfac9592341e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621134386656203750, guid: 646af9c4b529b584ea93bfac9592341e,
         type: 3}
@@ -438,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 3621134386656203750, guid: 646af9c4b529b584ea93bfac9592341e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3621134386656203750, guid: 646af9c4b529b584ea93bfac9592341e,
         type: 3}
