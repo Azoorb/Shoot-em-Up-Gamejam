@@ -1,0 +1,70 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WaveManager : MonoBehaviour
+{
+    [SerializeField]
+    List<DataWave> dataWaveList;
+
+    private int actualRound;
+    private float  actualMinInterval;
+    private float actualMaxInterval;
+    private List<int> actualNumberEnemyLeft;
+    private List<GameObject> actualEnemyLeft;
+
+    private void Awake()
+    {
+        actualNumberEnemyLeft = new List<int>();
+        actualEnemyLeft = new List<GameObject>();
+    }
+
+
+    public void StartRound(int round)
+    {
+        actualNumberEnemyLeft.Clear();
+        actualNumberEnemyLeft.Clear();
+        actualNumberEnemyLeft.AddRange(dataWaveList[round].numberEnemyInWave);
+        actualEnemyLeft.AddRange(dataWaveList[round].enemyInWave);
+        actualMinInterval = dataWaveList[round].minIntervalSpawn;
+        actualMaxInterval = dataWaveList[round].maxIntervalSpawn;
+        StartCoroutine(SpawnTimer());
+    }
+
+    private void Start()
+    {
+        if(dataWaveList.Count!=0)
+        {
+            StartRound(0);
+        }
+        
+    }
+
+    public IEnumerator SpawnTimer()
+    {
+        if(actualNumberEnemyLeft.Count != 0 && actualEnemyLeft.Count != 0)
+        {
+            int randomEnemy = Random.Range(0, actualEnemyLeft.Count);
+            //Faut modifier le spawn ici 
+            Instantiate(actualEnemyLeft[randomEnemy], transform.position, Quaternion.identity);
+            actualNumberEnemyLeft[randomEnemy]--;
+            if(actualNumberEnemyLeft[randomEnemy] == 0)
+            {
+                actualNumberEnemyLeft.RemoveAt(randomEnemy);
+                actualEnemyLeft.RemoveAt(randomEnemy);
+            }
+            float randomInterval = Random.Range(actualMinInterval, actualMaxInterval);
+            yield return new WaitForSeconds(randomInterval);
+            StartCoroutine(SpawnTimer());
+        }
+        else
+        {
+            actualRound++;
+            if (actualRound < dataWaveList.Count)
+            {
+                StartRound(actualRound);
+            }
+        }
+        
+    }
+}

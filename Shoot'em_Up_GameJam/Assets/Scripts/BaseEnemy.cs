@@ -60,6 +60,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!burn)
         {
+            ColorRedEnemy();
             burn = true;
             StartCoroutine(BurnTimer(burnDuration));
             
@@ -78,13 +79,41 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         }
         else
         {
+            ResetColorEnemy();
             burn = false;
         }
     }
     public IEnumerator FreezeTimer()
     {
+        ColorBlueEnemy();
         freeze = true;
         yield return new WaitForSeconds(freezeDuration);
+        ResetColorEnemy();
         freeze = false;
     }
+
+    public void ResetColorEnemy()
+    {
+        for(int child = 0; child < transform.childCount;child++)
+        {
+            transform.GetChild(child).GetComponent<SpriteRenderer>().color = Color.white;
+        }
+    }
+
+    public void ColorRedEnemy()
+    {
+        for (int child = 0; child < transform.childCount; child++)
+        {
+            transform.GetChild(child).GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
+
+    public void ColorBlueEnemy()
+    {
+        for (int child = 0; child < transform.childCount; child++)
+        {
+            transform.GetChild(child).GetComponent<SpriteRenderer>().color =  new Color(0, 54, 255);
+        }
+    }
+         
 }
