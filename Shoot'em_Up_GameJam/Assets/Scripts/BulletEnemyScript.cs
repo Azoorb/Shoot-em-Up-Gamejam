@@ -40,7 +40,7 @@ public class BulletEnemyScript : MonoBehaviour
         {
             if (collision.collider.CompareTag("Player"))
             {
-                collision.gameObject.GetComponent<PlayerScript>().TakeDamage(damage);
+                collision.collider.GetComponent<PlayerScript>().TakeDamage(damage);
             }
             Destroy(gameObject);
         }

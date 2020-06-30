@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1075077424700562088}
   m_Layer: 0
   m_Name: ShipRenderer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,10 +136,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   fireRate: 0.5
+  laserRate: 0
+  laserTime: 0
   timeAfterNextDash: 0.5
   dashForce: 1000
+  damageBonus: 0
+  freezeProbabily: 0
+  fireProbabily: 0
   bulletPrefab: {fileID: 30387252306038128, guid: 374feae30c9875f4bbfed3e517d6ae65,
     type: 3}
+  laserPrefab: {fileID: 0}
   spawnBullet: {fileID: 3099300770561006393}
   boostAnim: {fileID: 1814179852}
   hp: 0
@@ -154,7 +160,7 @@ GameObject:
   - component: {fileID: 7814871504708428320}
   m_Layer: 0
   m_Name: SpawnBullet
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +192,7 @@ GameObject:
   - component: {fileID: 1814179852}
   m_Layer: 0
   m_Name: Boost
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

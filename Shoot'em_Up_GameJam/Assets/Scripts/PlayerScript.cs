@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     private bool canDash = true;
     [SerializeField]
     Animator boostAnim;
+    Animator shipAnim;
     [SerializeField]
     int hp;
     
@@ -42,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9);
         Physics2D.IgnoreLayerCollision(8, 10);
         Physics2D.IgnoreLayerCollision(9, 10);
+        shipAnim = GetComponent<Animator>();
 
     }
 
@@ -166,6 +168,7 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        shipAnim.SetTrigger("TakeDamage");
         hp -= damage;
     }
 }
