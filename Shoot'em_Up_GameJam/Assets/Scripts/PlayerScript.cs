@@ -1,10 +1,8 @@
 ﻿
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms;
 
 public class PlayerScript : MonoBehaviour
 {
