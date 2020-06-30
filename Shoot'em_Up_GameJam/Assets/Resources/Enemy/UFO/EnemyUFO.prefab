@@ -257,9 +257,9 @@ MonoBehaviour:
   burnDuration: 2
   hp: 3
   expDrop: 5
-  tpDistToPlayer: 4.5
+  tpDistToPlayer: 2.5
   tpRate: 5
-  maxDist: 6.5
+  maxDist: 5.5
 --- !u!50 &-2010675959274913246
 Rigidbody2D:
   serializedVersion: 4

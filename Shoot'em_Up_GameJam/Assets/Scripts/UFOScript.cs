@@ -51,7 +51,7 @@ public class UFOScript : BaseEnemy
 
     private void Teleport()
     {
-        Vector2 tpVector = new Vector2(Random.Range(-1, 1),Random.Range(-1, 1)).normalized * tpDistToPlayer;
+        Vector2 tpVector = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f, 1f)).normalized * tpDistToPlayer;
         rb.position = (Vector2)ship.transform.position + tpVector;
     }
 
