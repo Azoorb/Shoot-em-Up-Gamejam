@@ -115,5 +115,10 @@ public class BaseEnemy : MonoBehaviour, IEnemy
             transform.GetChild(child).GetComponent<SpriteRenderer>().color =  new Color(0, 54, 255);
         }
     }
+
+    public void AddHp(int hp)
+    {
+        this.hp += hp;
+    }
          
 }

@@ -12,10 +12,12 @@ public class WaveManager : MonoBehaviour
     private float actualMaxInterval;
     private List<int> actualNumberEnemyLeft;
     private List<GameObject> actualEnemyLeft;
+    private List<int> actualHpBonusEnemy;
 
     private void Awake()
     {
         actualNumberEnemyLeft = new List<int>();
+        actualHpBonusEnemy = new List<int>();
         actualEnemyLeft = new List<GameObject>();
     }
 
@@ -24,8 +26,10 @@ public class WaveManager : MonoBehaviour
     {
         actualNumberEnemyLeft.Clear();
         actualNumberEnemyLeft.Clear();
+        actualHpBonusEnemy.Clear();
         actualNumberEnemyLeft.AddRange(dataWaveList[round].numberEnemyInWave);
         actualEnemyLeft.AddRange(dataWaveList[round].enemyInWave);
+        actualHpBonusEnemy.AddRange(dataWaveList[round].hpBonusForEnemy);
         actualMinInterval = dataWaveList[round].minIntervalSpawn;
         actualMaxInterval = dataWaveList[round].maxIntervalSpawn;
         StartCoroutine(SpawnTimer());
@@ -46,7 +50,8 @@ public class WaveManager : MonoBehaviour
         {
             int randomEnemy = Random.Range(0, actualEnemyLeft.Count);
             //Faut modifier le spawn ici 
-            Instantiate(actualEnemyLeft[randomEnemy], transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(actualEnemyLeft[randomEnemy], transform.position, Quaternion.identity);
+            enemy.GetComponent<IEnemy>().AddHp(actualHpBonusEnemy[randomEnemy]);
             actualNumberEnemyLeft[randomEnemy]--;
             if(actualNumberEnemyLeft[randomEnemy] == 0)
             {
