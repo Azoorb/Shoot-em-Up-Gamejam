@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 
-public class P40WScript : MonoBehaviour
+public class P40WScript : MonoBehaviour, IEnemy
 {
     private GameObject ship;
     private GameObject body;
@@ -12,7 +12,13 @@ public class P40WScript : MonoBehaviour
 
     private int lastAttack;
 
+    [Header("P40W Settings")]
+    [SerializeField] int life;
+    private int maxLife;
+    [SerializeField] int expDrop;
     [SerializeField] float timeBeetweenAttacks;
+    private bool freeze = false, burn = false;
+    private RectTransform rt;
 
     [Header("Missiles")]
     [SerializeField] GameObject missilePrefab;
@@ -28,11 +34,18 @@ public class P40WScript : MonoBehaviour
     private Vector2 chargeMovement;
     private bool isCharging = false, stunned = false;
 
+    [Header("Ennemy Spawn")]
+    [SerializeField] GameObject[] enemiesPrefabs;
+    [SerializeField] float spawnTime;
+
     private void Start()
     {
         ship = GameObject.Find("Ship");
         body = GetComponentsInChildren<SpriteRenderer>()[0].gameObject;
         rb = GetComponent<Rigidbody2D>();
+        rt = GetComponentsInChildren<RectTransform>()[1];
+
+        maxLife = life;
 
         SetupAnimatons();
         StartCoroutine(NewAttack());
@@ -56,15 +69,26 @@ public class P40WScript : MonoBehaviour
                 a.SetBool("14", true);
         }
     }
+    private void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.CompareTag("Terrain") && isCharging)
+        {
+            isCharging = false;
+            StartCoroutine(Stun());
+        }
+    }
+
+    
 
     IEnumerator NewAttack()
     {
         yield return new WaitForSeconds(timeBeetweenAttacks);
 
         //a terminer
-        int i = Random.Range(0, 2);
+        int i = Random.Range(0, 3);
+
         while (i == lastAttack)
-            i = Random.Range(0, 2);
+            i = Random.Range(0, 3);
 
         lastAttack = i;
 
@@ -72,6 +96,8 @@ public class P40WScript : MonoBehaviour
             StartCoroutine(A_Missiles());
         else if (i == 1)
             StartCoroutine(A_Charge());
+        else if (i == 2)
+            StartCoroutine(A_Spawn());
     }
 
 
@@ -118,19 +144,122 @@ public class P40WScript : MonoBehaviour
             StartCoroutine(A_Charge());
         else
             StartCoroutine(NewAttack());
-            
+
     }
     private void FixedUpdate()
     {
         if (isCharging)
             rb.position += chargeMovement * Time.fixedDeltaTime;
     }
-    private void OnCollisionEnter2D(Collision2D c)
+
+
+
+    //ATTTACK spawn
+    private IEnumerator A_Spawn()
     {
-        if (c.gameObject.CompareTag("Terrain") && isCharging)
+        foreach (GameObject e in enemiesPrefabs)
         {
-            isCharging = false;
-            StartCoroutine(Stun());
+            yield return new WaitForSeconds(spawnTime);
+
+            Instantiate(e, transform.position, Quaternion.identity);
+            if (Random.Range(0, 2) == 1)
+                Instantiate(e, transform.position, Quaternion.identity);
+
+        }
+
+        StartCoroutine(NewAttack());
+    }
+
+
+
+
+    //ENEMY BASE
+
+    public void TakeDammage(int damage)
+    {
+        Debug.Log("HIT");
+
+        life -= damage;
+
+        if (life <= 0)
+        {
+            Died();
+        }
+        else
+        {
+            rt.localScale = new Vector3(life / maxLife, 1f, 1f);
+        }
+    }
+    private void Died()
+    {
+        ParticuleManagerScript.instance.CreateExplosion(transform.position);
+        SliderManager.instance.GainExp(expDrop);
+        Destroy(gameObject);
+    }
+
+    public void Freeze()
+    {
+        StartCoroutine(FreezeTimer());
+    }
+
+    public void Burn()
+    {
+        if (!burn)
+        {
+            ColorRedEnemy();
+            burn = true;
+            StartCoroutine(BurnTimer(0.5f));
+
+        }
+    }
+
+    public void AddHp(int hp) => Debug.Log("Add hp");
+
+    public IEnumerator BurnTimer(float burnDurationLeft)
+    {
+        yield return new WaitForSeconds(0.5f);
+        burnDurationLeft -= 0.5f;
+        if (burnDurationLeft > 0)
+        {
+            StartCoroutine(BurnTimer(burnDurationLeft));
+            TakeDammage(1);
+        }
+        else
+        {
+            ResetColorEnemy();
+            burn = false;
+        }
+    }
+    public IEnumerator FreezeTimer()
+    {
+        ColorBlueEnemy();
+        freeze = true;
+        yield return new WaitForSeconds(0.5f);
+        ResetColorEnemy();
+        freeze = false;
+    }
+
+    public void ResetColorEnemy()
+    {
+        for (int child = 0; child < transform.childCount; child++)
+        {
+            transform.GetChild(child).GetComponent<SpriteRenderer>().color = Color.white;
+        }
+    }
+
+    public void ColorRedEnemy()
+    {
+        for (int child = 0; child < transform.childCount; child++)
+        {
+            transform.GetChild(child).GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
+
+    public void ColorBlueEnemy()
+    {
+        for (int child = 0; child < transform.childCount; child++)
+        {
+            transform.GetChild(child).GetComponent<SpriteRenderer>().color = new Color(0, 54, 255);
         }
     }
 }

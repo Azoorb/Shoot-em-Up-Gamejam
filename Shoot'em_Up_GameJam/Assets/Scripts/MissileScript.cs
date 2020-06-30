@@ -35,8 +35,5 @@ public class MissileScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
             lifeTime -= 1;
-        else if (collision.gameObject.CompareTag("Player"))
-            Debug.Log("Joueur touché");
-            //DEGATS JOUEUR;
     }
 }
