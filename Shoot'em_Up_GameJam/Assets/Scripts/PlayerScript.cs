@@ -17,6 +17,9 @@ public class PlayerScript : MonoBehaviour
     GameObject bulletPrefab,laserPrefab,spawnBullet,spawnLaser,boostDashObject,boostObject;
     Collider2D colliderShip;
     private bool canDash = true;
+    public LayerMask actualDimension;
+    [SerializeField]
+    public LayerMask layerDimensionA,layerDimensionB;
     [SerializeField]
     Animator boostAnim;
     Animator shipAnim;
@@ -40,12 +43,17 @@ public class PlayerScript : MonoBehaviour
             }
         };
         controller.Player.Laser.performed += ctx => Laser();
+        controller.Player.SwitchDimension.performed += ctx => ChangeDimension();
         
         colliderShip = GetComponent<Collider2D>();
         Physics2D.IgnoreLayerCollision(8, 9);
         Physics2D.IgnoreLayerCollision(8, 10);
         Physics2D.IgnoreLayerCollision(9, 10);
+        Physics2D.IgnoreLayerCollision(11, 10);
+        Physics2D.IgnoreLayerCollision(11, 9);
+        Physics2D.IgnoreLayerCollision(11, 8);
         shipAnim = GetComponent<Animator>();
+        actualDimension = layerDimensionA;
 
     }
 
@@ -76,6 +84,23 @@ public class PlayerScript : MonoBehaviour
         
     }
 
+    private void ChangeDimension()
+    {
+        
+        if(actualDimension == layerDimensionA)
+        {
+            Camera.main.cullingMask -= layerDimensionA;
+            Camera.main.cullingMask += layerDimensionB;
+            actualDimension = layerDimensionB;
+        }
+        else
+        {
+            Camera.main.cullingMask += layerDimensionA;
+            Camera.main.cullingMask -= layerDimensionB;
+            actualDimension = layerDimensionA;
+        }
+        EnemyManager.instance.ChangeDimensionEnemy();
+    }
     private void MakeRotation(Vector2 vector)
     {
         float angle = Mathf.Atan2(-vector.x, vector.y) * Mathf.Rad2Deg;

@@ -1382,6 +1382,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 555990693}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &374332396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4060811379286697464, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1098446059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &378067612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5021393819796834785, guid: 48e9990976fd0a64b81d5dc60e91f67b,
@@ -1491,6 +1497,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1112700122}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &455623251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2864536968503845745, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_Name
+      value: enemyGunner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845746, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4881234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864536968503845749, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9, type: 3}
 --- !u!1001 &455991162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4343,6 +4423,21 @@ PrefabInstance:
         type: 3}
       propertyPath: laserRate
       value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075077424700562088, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+        type: 3}
+      propertyPath: boostSpriteObject
+      value: 
+      objectReference: {fileID: 374332396}
+    - target: {fileID: 4060811379286697464, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060811379286697464, guid: 00cc1464f7a4e3a469457f463b0c71ac,
+        type: 3}
+      propertyPath: m_Name
+      value: Boost
       objectReference: {fileID: 0}
     - target: {fileID: 8025439418126868033, guid: 00cc1464f7a4e3a469457f463b0c71ac,
         type: 3}

@@ -49,6 +49,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwitchDimension"",
+                    ""type"": ""Value"",
+                    ""id"": ""46361a0d-5044-464f-a7e3-11f3b56813f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -212,7 +220,7 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Laser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -223,8 +231,19 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Laser"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b08b889-f6a8-4b07-bbdf-de8a7e79e50f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SwitchDimension"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -262,6 +281,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Laser = m_Player.FindAction("Laser", throwIfNotFound: true);
+        m_Player_SwitchDimension = m_Player.FindAction("SwitchDimension", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +335,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Laser;
+    private readonly InputAction m_Player_SwitchDimension;
     public struct PlayerActions
     {
         private @Controller m_Wrapper;
@@ -323,6 +344,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Laser => m_Wrapper.m_Player_Laser;
+        public InputAction @SwitchDimension => m_Wrapper.m_Player_SwitchDimension;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -344,6 +366,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @Laser.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLaser;
                 @Laser.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLaser;
                 @Laser.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLaser;
+                @SwitchDimension.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchDimension;
+                @SwitchDimension.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchDimension;
+                @SwitchDimension.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchDimension;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +385,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @Laser.started += instance.OnLaser;
                 @Laser.performed += instance.OnLaser;
                 @Laser.canceled += instance.OnLaser;
+                @SwitchDimension.started += instance.OnSwitchDimension;
+                @SwitchDimension.performed += instance.OnSwitchDimension;
+                @SwitchDimension.canceled += instance.OnSwitchDimension;
             }
         }
     }
@@ -388,5 +416,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnLaser(InputAction.CallbackContext context);
+        void OnSwitchDimension(InputAction.CallbackContext context);
     }
 }

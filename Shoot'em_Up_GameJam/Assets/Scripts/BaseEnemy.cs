@@ -9,11 +9,34 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     protected bool freeze = false,burn = false ;
     protected Rigidbody2D rb;
     protected GameObject ship;
+    public LayerMask actualDimension;
     private float tickBurn = 1f;
     protected Animator enemyAnimator;
+    public GameObject light;
 
     protected virtual void Start()
     {
+        int randomDimension = Random.Range(0, 2);
+        if(randomDimension ==0)
+        {
+            actualDimension = EnemyManager.instance.dimensionALayout;
+            for(int i = 0; i<transform.childCount;i++)
+            {
+                gameObject.transform.GetChild(i).gameObject.layer = 8;
+            }
+            gameObject.layer = 8;
+        }
+        else
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                gameObject.transform.GetChild(i).gameObject.layer = 11;
+            }
+            actualDimension = EnemyManager.instance.dimensionBLayout;
+            gameObject.layer = 11;
+        }
+        EnemyManager.instance.enemyList.Add(gameObject);
+        EnemyManager.instance.CheckLight(gameObject);
         enemyAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ship = GameObject.Find("Ship");
@@ -50,6 +73,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     {
         ParticuleManagerScript.instance.CreateExplosion(transform.position);
         SliderManager.instance.GainExp(expDrop);
+        EnemyManager.instance.enemyList.Remove(gameObject);
         Destroy(gameObject);
     }
 
