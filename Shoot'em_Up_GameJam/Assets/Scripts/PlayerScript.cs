@@ -39,6 +39,8 @@ public class PlayerScript : MonoBehaviour
                 Dash();
             }
         };
+        controller.Player.Laser.performed += ctx => Laser();
+        
         colliderShip = GetComponent<Collider2D>();
         Physics2D.IgnoreLayerCollision(8, 9);
         Physics2D.IgnoreLayerCollision(8, 10);
@@ -83,13 +85,15 @@ public class PlayerScript : MonoBehaviour
 
     private void Shoot()
     {
+        
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
         Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
         bullet.GetComponent<BulletScript>().InitializeBullet(vectorAim, CheckShootState(freezeProbabily), CheckShootState(fireProbabily));
         StartCoroutine(ShootTimer());
+        
     }
 
-    private void Lazer()
+    public void Laser()
     {
         GameObject laser = Instantiate(laserPrefab, spawnBullet.transform);
         StartCoroutine(LaserTimer());

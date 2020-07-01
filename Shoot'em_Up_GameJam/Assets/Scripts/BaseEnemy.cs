@@ -10,9 +10,11 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     protected Rigidbody2D rb;
     protected GameObject ship;
     private float tickBurn = 1f;
+    Animator enemyAnimator;
 
     protected virtual void Start()
     {
+        enemyAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ship = GameObject.Find("Ship");
     }
@@ -26,6 +28,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     public virtual void TakeDammage(int damage)
     {
         hp -= damage;
+        enemyAnimator.SetTrigger("Hurt");
         if (hp <= 0)
         {
             Died();
