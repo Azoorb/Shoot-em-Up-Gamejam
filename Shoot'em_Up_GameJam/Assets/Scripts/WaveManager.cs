@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XInput;
 
 public class WaveManager : MonoBehaviour
 {
@@ -50,7 +51,8 @@ public class WaveManager : MonoBehaviour
         {
             int randomEnemy = Random.Range(0, actualEnemyLeft.Count);
             //Faut modifier le spawn ici 
-            GameObject enemy = Instantiate(actualEnemyLeft[randomEnemy], transform.position, Quaternion.identity);
+            int randomSpawnPoint = Random.Range(0, transform.childCount);
+            GameObject enemy = Instantiate(actualEnemyLeft[randomEnemy], transform.GetChild(randomSpawnPoint).transform.position, Quaternion.identity);
             enemy.GetComponent<IEnemy>().AddHp(actualHpBonusEnemy[randomEnemy]);
             actualNumberEnemyLeft[randomEnemy]--;
             if(actualNumberEnemyLeft[randomEnemy] == 0)

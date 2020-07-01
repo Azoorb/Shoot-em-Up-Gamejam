@@ -10,7 +10,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     protected Rigidbody2D rb;
     protected GameObject ship;
     private float tickBurn = 1f;
-    Animator enemyAnimator;
+    protected Animator enemyAnimator;
 
     protected virtual void Start()
     {

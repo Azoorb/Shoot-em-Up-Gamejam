@@ -15,6 +15,6 @@ MonoBehaviour:
   enemyInWave:
   - {fileID: 7369723757000909014, guid: 60fa6a709315ab346a6750622e49480d, type: 3}
   numberEnemyInWave: 0a000000
-  hpBonusForEnemy: 00000000
+  hpBonusForEnemy: 02000000
   minIntervalSpawn: 1
   maxIntervalSpawn: 2

@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     public int damageBonus;
     public float freezeProbabily = 0,fireProbabily = 0;
     [SerializeField]
-    GameObject bulletPrefab,laserPrefab,spawnBullet;
+    GameObject bulletPrefab,laserPrefab,spawnBullet,spawnLaser;
     Collider2D colliderShip;
     private bool canDash = true;
     [SerializeField]
@@ -95,7 +95,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Laser()
     {
-        GameObject laser = Instantiate(laserPrefab, spawnBullet.transform);
+        GameObject laser = Instantiate(laserPrefab, spawnLaser.transform);
         StartCoroutine(LaserTimer());
     }
 
@@ -114,6 +114,7 @@ public class PlayerScript : MonoBehaviour
         canShoot = false;
         canLaser = false;
         yield return new WaitForSeconds(laserTime);
+        Destroy(spawnLaser.transform.GetChild(0).gameObject);
         canShoot = true;
         yield return new WaitForSeconds(laserRate);
         canLaser = true;
