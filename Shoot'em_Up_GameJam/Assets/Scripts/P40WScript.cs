@@ -4,20 +4,16 @@ using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 
-public class P40WScript : MonoBehaviour, IEnemy
+public class P40WScript : BaseEnemy, IEnemy
 {
-    private GameObject ship;
     private GameObject body;
-    private Rigidbody2D rb;
 
     private int lastAttack;
 
     [Header("P40W Settings")]
     [SerializeField] int life;
     private int maxLife;
-    [SerializeField] int expDrop;
     [SerializeField] float timeBeetweenAttacks;
-    private bool freeze = false, burn = false;
     private RectTransform rt;
 
     [Header("Missiles")]
@@ -38,7 +34,7 @@ public class P40WScript : MonoBehaviour, IEnemy
     [SerializeField] GameObject[] enemiesPrefabs;
     [SerializeField] float spawnTime;
 
-    private void Start()
+    protected override void Start()
     {
         ship = GameObject.Find("Ship");
         body = GetComponentsInChildren<SpriteRenderer>()[0].gameObject;
@@ -50,10 +46,9 @@ public class P40WScript : MonoBehaviour, IEnemy
         SetupAnimatons();
         StartCoroutine(NewAttack());
 
-        Physics2D.IgnoreLayerCollision(8, 9);
     }
 
-    void Update()
+    protected override void  Update()
     {
         if (!isCharging && !stunned)
             body.transform.up = -(Vector2)(ship.transform.position - transform.position);
@@ -69,8 +64,9 @@ public class P40WScript : MonoBehaviour, IEnemy
                 a.SetBool("14", true);
         }
     }
-    private void OnCollisionEnter2D(Collision2D c)
+    protected override void OnCollisionEnter2D(Collision2D c)
     {
+        base.OnCollisionEnter2D(c);
         if (c.gameObject.CompareTag("Terrain") && isCharging)
         {
             isCharging = false;
@@ -146,7 +142,7 @@ public class P40WScript : MonoBehaviour, IEnemy
             StartCoroutine(NewAttack());
 
     }
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         if (isCharging)
             rb.position += chargeMovement * Time.fixedDeltaTime;
@@ -175,7 +171,7 @@ public class P40WScript : MonoBehaviour, IEnemy
 
     //ENEMY BASE
 
-    public void TakeDammage(int damage)
+    public override void TakeDammage(int damage)
     {
         Debug.Log("HIT");
 
@@ -197,69 +193,10 @@ public class P40WScript : MonoBehaviour, IEnemy
         Destroy(gameObject);
     }
 
-    public void Freeze()
-    {
-        StartCoroutine(FreezeTimer());
-    }
+    
 
-    public void Burn()
-    {
-        if (!burn)
-        {
-            ColorRedEnemy();
-            burn = true;
-            StartCoroutine(BurnTimer(0.5f));
+    public override void AddHp(int hp) => life+=hp;
 
-        }
-    }
-
-    public void AddHp(int hp) => Debug.Log("Add hp");
-
-    public IEnumerator BurnTimer(float burnDurationLeft)
-    {
-        yield return new WaitForSeconds(0.5f);
-        burnDurationLeft -= 0.5f;
-        if (burnDurationLeft > 0)
-        {
-            StartCoroutine(BurnTimer(burnDurationLeft));
-            TakeDammage(1);
-        }
-        else
-        {
-            ResetColorEnemy();
-            burn = false;
-        }
-    }
-    public IEnumerator FreezeTimer()
-    {
-        ColorBlueEnemy();
-        freeze = true;
-        yield return new WaitForSeconds(0.5f);
-        ResetColorEnemy();
-        freeze = false;
-    }
-
-    public void ResetColorEnemy()
-    {
-        for (int child = 0; child < transform.childCount; child++)
-        {
-            transform.GetChild(child).GetComponent<SpriteRenderer>().color = Color.white;
-        }
-    }
-
-    public void ColorRedEnemy()
-    {
-        for (int child = 0; child < transform.childCount; child++)
-        {
-            transform.GetChild(child).GetComponent<SpriteRenderer>().color = Color.red;
-        }
-    }
-
-    public void ColorBlueEnemy()
-    {
-        for (int child = 0; child < transform.childCount; child++)
-        {
-            transform.GetChild(child).GetComponent<SpriteRenderer>().color = new Color(0, 54, 255);
-        }
-    }
+   
+    
 }

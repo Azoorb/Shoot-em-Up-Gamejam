@@ -119,12 +119,12 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         }
     }
 
-    public void AddHp(int hp)
+    public virtual void AddHp(int hp)
     {
         this.hp += hp;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.CompareTag("Player"))
         {
