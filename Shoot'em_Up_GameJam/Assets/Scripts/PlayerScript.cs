@@ -52,6 +52,8 @@ public class PlayerScript : MonoBehaviour
         Physics2D.IgnoreLayerCollision(11, 10);
         Physics2D.IgnoreLayerCollision(11, 9);
         Physics2D.IgnoreLayerCollision(11, 8);
+        Physics2D.IgnoreLayerCollision(12, 8, false);
+        Physics2D.IgnoreLayerCollision(12, 11, true);
         shipAnim = GetComponent<Animator>();
         actualDimension = layerDimensionA;
 
@@ -92,12 +94,16 @@ public class PlayerScript : MonoBehaviour
             Camera.main.cullingMask -= layerDimensionA;
             Camera.main.cullingMask += layerDimensionB;
             actualDimension = layerDimensionB;
+            Physics2D.IgnoreLayerCollision(12, 8,true);
+            Physics2D.IgnoreLayerCollision(12, 11,false);
         }
         else
         {
             Camera.main.cullingMask += layerDimensionA;
             Camera.main.cullingMask -= layerDimensionB;
             actualDimension = layerDimensionA;
+            Physics2D.IgnoreLayerCollision(12, 8,false);
+            Physics2D.IgnoreLayerCollision(12, 11, true);
         }
         EnemyManager.instance.ChangeDimensionEnemy();
     }

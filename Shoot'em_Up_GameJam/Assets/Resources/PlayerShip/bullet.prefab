@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 30387252306038140}
   - component: {fileID: 30387252306038142}
   - component: {fileID: 30387252306038129}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8787913608871663653}
   - component: {fileID: 3833270316165900369}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449302220182629553}
   - component: {fileID: 710385977389581564}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
