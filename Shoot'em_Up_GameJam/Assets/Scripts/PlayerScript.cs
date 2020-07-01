@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     public int damageBonus;
     public float freezeProbabily = 0,fireProbabily = 0;
     [SerializeField]
-    GameObject bulletPrefab,laserPrefab,spawnBullet,spawnLaser;
+    GameObject bulletPrefab,laserPrefab,spawnBullet,spawnLaser,boostDashObject,boostObject;
     Collider2D colliderShip;
     private bool canDash = true;
     [SerializeField]
@@ -131,6 +131,8 @@ public class PlayerScript : MonoBehaviour
     private void Dash()
     {
         transform.parent.GetComponent<Rigidbody2D>().AddForce(vectorMovement * dashForce);
+        boostDashObject.SetActive(true);
+        boostObject.SetActive(false);
         StartCoroutine(TimerDash(timeAfterNextDash));
         StartCoroutine(StopDash());
     }
@@ -139,6 +141,8 @@ public class PlayerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         transform.parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        boostDashObject.SetActive(false);
+        boostObject.SetActive(true);
     }
 
     private IEnumerator TimerDash(float timeAfterNextDash)
