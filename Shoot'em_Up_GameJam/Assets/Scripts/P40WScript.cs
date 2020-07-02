@@ -15,8 +15,8 @@ public class P40WScript : BaseEnemy, IEnemy
     [Header("P40W Settings")]
     [SerializeField] int life;
     private int maxLife;
+    [SerializeField] GameObject lifeFiller;
     [SerializeField] float timeBeetweenAttacks;
-    private RectTransform rt;
 
     [Header("Missiles")]
     [SerializeField] GameObject missilePrefab;
@@ -41,11 +41,10 @@ public class P40WScript : BaseEnemy, IEnemy
         ship = GameObject.Find("Ship");
         body = GetComponentsInChildren<SpriteRenderer>()[0].gameObject;
         rb = GetComponent<Rigidbody2D>();
-        rt = GetComponentsInChildren<RectTransform>()[1];
 
         maxLife = life;
 
-        SetupAnimatons();
+        SetupAnimations();
         StartCoroutine(NewAttack());
 
     }
@@ -56,7 +55,7 @@ public class P40WScript : BaseEnemy, IEnemy
             body.transform.up = -(Vector2)(ship.transform.position - transform.position);
     }
 
-    private void SetupAnimatons()
+    private void SetupAnimations()
     {
         anims = GetComponentsInChildren<Animator>();
 
@@ -196,7 +195,7 @@ public class P40WScript : BaseEnemy, IEnemy
         }
         else
         {
-            rt.localScale = new Vector3(life / maxLife, 1f, 1f);
+            lifeFiller.transform.localScale = new Vector3(life / maxLife * 3.875f, 0.875f, 1f);
         }
     }
     private void Died()

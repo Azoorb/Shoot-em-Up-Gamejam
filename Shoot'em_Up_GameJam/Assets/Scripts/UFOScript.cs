@@ -5,7 +5,8 @@ using UnityEngine;
 public class UFOScript : BaseEnemy
 {
     [SerializeField] private float tpDistToPlayer, tpRate, maxDist;
-
+    private Animator[] anims;
+    private new GameObject ship;
 
     private bool readyTp = true, wantTp, mustTp;
 
@@ -13,6 +14,7 @@ public class UFOScript : BaseEnemy
     {
         base.Start();
 
+        ship = GameObject.Find("Ship");
         MetasSpriteSetup();
     }
 
@@ -66,18 +68,27 @@ public class UFOScript : BaseEnemy
 
     private void MetasSpriteSetup()
     {
-        Animator[] animators = GetComponentsInChildren<Animator>();
+        anims = GetComponentsInChildren<Animator>();
 
         //Debug.Log(animators.Length);
 
-        foreach (Animator a in animators)
+        foreach (Animator a in anims)
         {
             if (a.gameObject.name == "Left")
                 a.SetBool("Left", true);
         }
     }
 
-    
 
+    private void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.CompareTag("PlayerBullet"))
+        {
+            foreach (Animator a in anims)
+            {
+                a.SetTrigger("Hit");
+            }
+        }
+    }
 
 }

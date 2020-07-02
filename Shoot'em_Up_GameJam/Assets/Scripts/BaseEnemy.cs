@@ -11,7 +11,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     protected GameObject ship;
     public LayerMask actualDimension;
     private float tickBurn = 1f;
-    protected Animator enemyAnimator;
+    protected Animator[] enemyAnimators;
     public GameObject light;
 
     protected virtual void Start()
@@ -37,7 +37,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         }
         EnemyManager.instance.enemyList.Add(gameObject);
         EnemyManager.instance.CheckLight(gameObject);
-        enemyAnimator = GetComponent<Animator>();
+        enemyAnimators = GetComponentsInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ship = GameObject.Find("Ship");
     }
@@ -51,7 +51,8 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     public virtual void TakeDammage(int damage)
     {
         hp -= damage;
-        enemyAnimator.SetTrigger("Hurt");
+        if (enemyAnimators.Length == 1)
+            enemyAnimators[0].SetTrigger("Hurt");
         if (hp <= 0)
         {
             Died();
