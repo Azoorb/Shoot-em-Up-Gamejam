@@ -7,6 +7,7 @@ using UnityEngine;
 public class P40WScript : BaseEnemy, IEnemy
 {
     private GameObject body;
+    private Animator[] anims;
 
     private int lastAttack;
 
@@ -43,8 +44,8 @@ public class P40WScript : BaseEnemy, IEnemy
 
         maxLife = life;
 
-        SetupAnimatons();
-        StartCoroutine(NewAttack());
+        SetupAnimations();
+        //StartCoroutine(NewAttack());
 
     }
 
@@ -54,9 +55,9 @@ public class P40WScript : BaseEnemy, IEnemy
             body.transform.up = -(Vector2)(ship.transform.position - transform.position);
     }
 
-    private void SetupAnimatons()
+    private void SetupAnimations()
     {
-        Animator[] anims = GetComponentsInChildren<Animator>();
+        anims = GetComponentsInChildren<Animator>();
 
         foreach (Animator a in anims)
         {
@@ -67,10 +68,19 @@ public class P40WScript : BaseEnemy, IEnemy
     protected override void OnCollisionEnter2D(Collision2D c)
     {
         base.OnCollisionEnter2D(c);
+
         if (c.gameObject.CompareTag("Terrain") && isCharging)
         {
             isCharging = false;
             StartCoroutine(Stun());
+        }
+        if (c.gameObject.CompareTag("PlayerBullet"))
+        {
+            foreach (Animator a in anims)
+            {
+                a.SetTrigger("Hit");
+            }
+            Debug.Log("Hit");
         }
     }
 
@@ -173,8 +183,6 @@ public class P40WScript : BaseEnemy, IEnemy
 
     public override void TakeDammage(int damage)
     {
-        Debug.Log("HIT");
-
         life -= damage;
 
         if (life <= 0)
