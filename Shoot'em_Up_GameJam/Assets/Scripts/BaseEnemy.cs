@@ -148,7 +148,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         this.hp += hp;
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.collider.CompareTag("Player"))
         {

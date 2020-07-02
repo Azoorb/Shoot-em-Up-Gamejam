@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     GameObject bulletPrefab,laserPrefab,spawnBullet,spawnLaser,boostDashObject,boostObject;
     Collider2D colliderShip;
     private bool canDash = true;
+    private bool canTakeDamage = true;
     public LayerMask actualDimension;
     [SerializeField]
     public LayerMask layerDimensionA,layerDimensionB;
@@ -84,6 +85,16 @@ public class PlayerScript : MonoBehaviour
             
         }
         
+    }
+
+    public void CanTakeDamageTrue()
+    {
+        canTakeDamage = true;
+    }
+
+    public void CanTakeDamageFalse()
+    {
+        canTakeDamage = false;
     }
 
     private void ChangeDimension()
