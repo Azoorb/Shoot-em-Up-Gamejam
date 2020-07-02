@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class P40WScript : BaseEnemy, IEnemy
 {
     private GameObject body;
+    private Animator[] anims;
 
     private int lastAttack;
 
@@ -56,7 +58,7 @@ public class P40WScript : BaseEnemy, IEnemy
 
     private void SetupAnimatons()
     {
-        Animator[] anims = GetComponentsInChildren<Animator>();
+        anims = GetComponentsInChildren<Animator>();
 
         foreach (Animator a in anims)
         {
@@ -74,7 +76,18 @@ public class P40WScript : BaseEnemy, IEnemy
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.CompareTag("PlayerBullet"))
+        {
+            foreach (Animator a in anims)
+            {
+                a.SetTrigger("Hit");
+            }
+        }
+    }
+
+
 
     IEnumerator NewAttack()
     {
