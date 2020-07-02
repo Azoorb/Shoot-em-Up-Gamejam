@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     public void CheckLight(GameObject enemy)
     {
         
-        if (enemy.GetComponent<BaseEnemy>().actualDimension != GameObject.Find("ShipRenderer").GetComponent<PlayerScript>().actualDimension)
+        if (enemy.GetComponent<BaseEnemy>().actualDimension != PlayerScript.instance.actualDimension)
         {
             enemy.GetComponent<BaseEnemy>().light.SetActive(true);
         }

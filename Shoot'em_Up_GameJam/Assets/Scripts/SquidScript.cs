@@ -27,9 +27,8 @@ public class SquidScript : BaseEnemy
         }
         EnemyManager.instance.enemyList.Add(gameObject);
         EnemyManager.instance.CheckLight(gameObject);
-        enemyAnimators[0] = transform.GetChild(0).GetComponent<Animator>();
+        enemyAnimators.Add(transform.GetChild(0).GetComponent<Animator>());
         rb = GetComponent<Rigidbody2D>();
-        ship = GameObject.Find("Ship");
     }
 
 }

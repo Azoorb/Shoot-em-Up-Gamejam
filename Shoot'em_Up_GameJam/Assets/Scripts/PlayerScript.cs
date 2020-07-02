@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
 {
     Controller controller;
     Vector2 vectorMovement,vectorAim;
-    bool canShoot = true, canLaser = false;
+    bool canShoot = true, canLaser = true;
     [SerializeField]
     public float speed ,fireRate,laserRate,laserTime,timeAfterNextDash,dashForce;
     public int damageBonus;
@@ -26,10 +26,16 @@ public class PlayerScript : MonoBehaviour
     Animator shipAnim;
     [SerializeField]
     int hp;
+    public static PlayerScript instance;
     
 
     private void Awake()
     {
+
+        if(instance == null)
+        {
+            instance = this;
+        }
         controller = new Controller();
 
         controller.Player.Movement.performed += ctx => vectorMovement = ctx.ReadValue<Vector2>();
@@ -43,7 +49,14 @@ public class PlayerScript : MonoBehaviour
                 Dash();
             }
         };
-        controller.Player.Laser.performed += ctx => Laser();
+        controller.Player.Laser.performed += ctx =>
+        {
+            if (canLaser)
+            {
+                Laser();
+            }
+
+        };
         controller.Player.SwitchDimension.performed += ctx => ChangeDimension();
         
         colliderShip = GetComponent<Collider2D>();
@@ -80,10 +93,10 @@ public class PlayerScript : MonoBehaviour
         }
         if (vectorAim != Vector2.zero && canShoot)
         {
-            //LevelManager.instance.GainLevel();
             Shoot();
             
         }
+        Debug.Log(canShoot);
         
     }
 
@@ -127,7 +140,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Shoot()
     {
-        
+        canShoot = false;
+        Debug.Log("Shoot");
+        StopCoroutine(ShootTimer());
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
         Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
         bullet.GetComponent<BulletScript>().InitializeBullet(vectorAim, CheckShootState(freezeProbabily), CheckShootState(fireProbabily));
@@ -138,6 +153,8 @@ public class PlayerScript : MonoBehaviour
     public void Laser()
     {
         GameObject laser = Instantiate(laserPrefab, spawnLaser.transform);
+        canShoot = false;
+        StopAllCoroutines();
         StartCoroutine(LaserTimer());
     }
 
@@ -145,21 +162,20 @@ public class PlayerScript : MonoBehaviour
     private IEnumerator ShootTimer()
     {
         canShoot = false;
-        canLaser = false;
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
-        canLaser = true;
     }
 
     private IEnumerator LaserTimer()
     {
-        canShoot = false;
         canLaser = false;
         yield return new WaitForSeconds(laserTime);
         Destroy(spawnLaser.transform.GetChild(0).gameObject);
         canShoot = true;
+        canDash = true;
         yield return new WaitForSeconds(laserRate);
         canLaser = true;
+        
     }
 
 

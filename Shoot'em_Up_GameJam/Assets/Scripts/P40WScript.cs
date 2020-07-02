@@ -38,7 +38,6 @@ public class P40WScript : BaseEnemy, IEnemy
 
     protected override void Start()
     {
-        ship = GameObject.Find("Ship");
         body = GetComponentsInChildren<SpriteRenderer>()[0].gameObject;
         rb = GetComponent<Rigidbody2D>();
 
@@ -52,7 +51,7 @@ public class P40WScript : BaseEnemy, IEnemy
     protected override void  Update()
     {
         if (!isCharging && !stunned)
-            body.transform.up = -(Vector2)(ship.transform.position - transform.position);
+            body.transform.up = -(Vector2)(PlayerScript.instance.transform.position - transform.position);
     }
 
     private void SetupAnimations()
@@ -138,7 +137,7 @@ public class P40WScript : BaseEnemy, IEnemy
 
         chargesLeft -= 1;
 
-        chargeMovement = (ship.transform.position - transform.position).normalized * chargeSpeed;
+        chargeMovement = (PlayerScript.instance.transform.position - transform.position).normalized * chargeSpeed;
 
         isCharging = true;
     }

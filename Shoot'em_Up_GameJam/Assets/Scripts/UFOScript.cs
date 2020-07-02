@@ -6,7 +6,6 @@ public class UFOScript : BaseEnemy
 {
     [SerializeField] private float tpDistToPlayer, tpRate, maxDist;
     private Animator[] anims;
-    private new GameObject ship;
 
     private bool readyTp = true, wantTp, mustTp;
 
@@ -14,7 +13,6 @@ public class UFOScript : BaseEnemy
     {
         base.Start();
 
-        ship = GameObject.Find("Ship");
         MetasSpriteSetup();
     }
 
@@ -23,7 +21,7 @@ public class UFOScript : BaseEnemy
     protected override void Update()
     {
         base.Update();
-        if (Vector2.Distance(ship.transform.position, transform.position) >= maxDist)
+        if (Vector2.Distance(PlayerScript.instance.transform.position, transform.position) >= maxDist)
         {
             wantTp = true;
         }
@@ -39,7 +37,7 @@ public class UFOScript : BaseEnemy
         }
     }
 
-    protected override void RotateToPlayer() => transform.up = (Vector2) (ship.transform.position - transform.position);
+    protected override void RotateToPlayer() => transform.up = (Vector2) (PlayerScript.instance.transform.position - transform.position);
 
 
 
@@ -54,7 +52,7 @@ public class UFOScript : BaseEnemy
     private void Teleport()
     {
         Vector2 tpVector = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f, 1f)).normalized * tpDistToPlayer;
-        rb.position = (Vector2)ship.transform.position + tpVector;
+        rb.position = (Vector2)PlayerScript.instance.transform.position + tpVector;
     }
 
     private IEnumerator TimerTeleport()

@@ -9,6 +9,6 @@ public class DamageUpgrade : UpgradeBase,IUpgrade
 
     public void UpgradePlayer()
     {
-        GameObject.Find("ShipRenderer").GetComponent<PlayerScript>().damageBonus += damageUp;
+        PlayerScript.instance.damageBonus += damageUp;
     }
 }

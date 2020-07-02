@@ -32,7 +32,7 @@ public class EnemyGunnerScript : BaseEnemy
     {
         GameObject bullet = Instantiate(prefabShoot, spawnShoot.transform.position, Quaternion.identity);
 
-        bullet.GetComponent<BulletEnemyScript>().SetTarget(spawnShoot.transform.position - ship.transform.position);
+        bullet.GetComponent<BulletEnemyScript>().SetTarget(spawnShoot.transform.position - PlayerScript.instance.transform.position);
 
     }
     private IEnumerator TimerShoot()
@@ -48,7 +48,7 @@ public class EnemyGunnerScript : BaseEnemy
     protected override void FixedUpdate() //Se déplacer vers le joueur
     {
 
-        if (Vector2.Distance(ship.transform.position, transform.position) > minDistance)
+        if (Vector2.Distance(PlayerScript.instance.transform.position, transform.position) > minDistance)
         {
             base.FixedUpdate();
             canShoot = false;

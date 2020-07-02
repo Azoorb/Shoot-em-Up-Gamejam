@@ -8,11 +8,16 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     [SerializeField] protected int hp, expDrop;
     protected bool freeze = false,burn = false ;
     protected Rigidbody2D rb;
-    protected GameObject ship;
     public LayerMask actualDimension;
     private float tickBurn = 1f;
-    protected Animator[] enemyAnimators;
+    protected List<Animator> enemyAnimators;
     public GameObject light;
+    protected bool canTakeDamageFromLaser = true;
+
+    private void Awake()
+    {
+        enemyAnimators = new List<Animator>();
+    }
 
     protected virtual void Start()
     {
@@ -37,9 +42,9 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         }
         EnemyManager.instance.enemyList.Add(gameObject);
         EnemyManager.instance.CheckLight(gameObject);
-        enemyAnimators = GetComponentsInChildren<Animator>();
+        enemyAnimators.AddRange(GetComponentsInChildren<Animator>());
         rb = GetComponent<Rigidbody2D>();
-        ship = GameObject.Find("Ship");
+        
     }
 
     protected virtual void Update()
@@ -47,11 +52,11 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         RotateToPlayer();
     }
 
-    protected virtual void RotateToPlayer() => transform.right = (Vector2)(ship.transform.position - transform.position);
+    protected virtual void RotateToPlayer() => transform.right = (Vector2)(PlayerScript.instance.transform.position - transform.position);
     public virtual void TakeDammage(int damage)
     {
         hp -= damage;
-        if (enemyAnimators.Length == 1)
+        if (enemyAnimators.Count == 1)
             enemyAnimators[0].SetTrigger("Hurt");
         if (hp <= 0)
         {
@@ -63,7 +68,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!freeze)
         {
-            Vector2 dir = (ship.transform.position - transform.position).normalized;
+            Vector2 dir = (PlayerScript.instance.transform.position - transform.position).normalized;
             rb.position += dir * speed * Time.fixedDeltaTime;
         }
         
@@ -156,6 +161,30 @@ public class BaseEnemy : MonoBehaviour, IEnemy
             collision.collider.GetComponent<PlayerScript>().TakeDamage(1);
         }
 
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Laser"))
+        {
+            TakeLaser();
+        }
+    }
+
+    public void TakeLaser()
+    {
+        if(canTakeDamageFromLaser)
+        {
+            StartCoroutine(LaserTimer());
+            TakeDammage(1+PlayerScript.instance.damageBonus);
+        }
+    }
+
+    public IEnumerator LaserTimer()
+    {
+        canTakeDamageFromLaser = false;
+        yield return new WaitForSeconds(0.3f);
+        canTakeDamageFromLaser = true;
     }
 
 }
