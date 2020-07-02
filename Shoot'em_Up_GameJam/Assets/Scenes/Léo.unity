@@ -4343,7 +4343,7 @@ PrefabInstance:
     - target: {fileID: 1075077424700562088, guid: 00cc1464f7a4e3a469457f463b0c71ac,
         type: 3}
       propertyPath: laserTime
-      value: 0.92
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1075077424700562088, guid: 00cc1464f7a4e3a469457f463b0c71ac,
         type: 3}
@@ -9551,12 +9551,12 @@ PrefabInstance:
     - target: {fileID: 8369006561206507094, guid: 350647967dabb744298a51fb97419ad3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.14
       objectReference: {fileID: 0}
     - target: {fileID: 8369006561206507094, guid: 350647967dabb744298a51fb97419ad3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.676
       objectReference: {fileID: 0}
     - target: {fileID: 8369006561206507094, guid: 350647967dabb744298a51fb97419ad3,
         type: 3}
