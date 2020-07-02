@@ -64,9 +64,9 @@ public class P40WScript : BaseEnemy, IEnemy
                 a.SetBool("14", true);
         }
     }
-    protected override void OnCollisionEnter2D(Collision2D c)
+    protected override void OnCollisionStay2D(Collision2D c)
     {
-        base.OnCollisionEnter2D(c);
+        base.OnCollisionStay2D(c);
         if (c.gameObject.CompareTag("Terrain") && isCharging)
         {
             isCharging = false;
