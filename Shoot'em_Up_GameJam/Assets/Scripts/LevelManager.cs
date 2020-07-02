@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     List<GameObject> cardPlaceList;
     [SerializeField]
     GameObject panelUpgrade;
+    public Animator transition;
     List<GameObject> listCardChoosen;
     private void Awake()
     {
@@ -31,7 +32,8 @@ public class LevelManager : MonoBehaviour
 
     public void GainLevel()
     {
-        panelUpgrade.SetActive(true);
+        transition.SetBool("End", false);
+        transition.SetBool("Start", true);
         Time.timeScale = 0;
         List<int> listIndexSetCardSelected = new List<int>();
         for(int counter = 0;counter < 3 && counter< setCardList.Count;counter++)
@@ -78,7 +80,8 @@ public class LevelManager : MonoBehaviour
             setCardList.Remove(setCard);
 
         }
-        panelUpgrade.SetActive(false);
+        transition.SetBool("Start", false);
+        transition.SetBool("End", true);
         Time.timeScale = 1;
     }
 }
