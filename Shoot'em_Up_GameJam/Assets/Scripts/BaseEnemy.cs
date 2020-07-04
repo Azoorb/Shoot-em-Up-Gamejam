@@ -13,6 +13,8 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     protected List<Animator> enemyAnimators;
     public GameObject light;
     protected bool canTakeDamageFromLaser = true;
+    [SerializeField]
+    bool forceDimension, otherDimension;
 
     private void Awake()
     {
@@ -21,25 +23,51 @@ public class BaseEnemy : MonoBehaviour, IEnemy
 
     protected virtual void Start()
     {
-        int randomDimension = Random.Range(0, 2);
-        if(randomDimension ==0)
+        if (forceDimension)
         {
-            actualDimension = EnemyManager.instance.dimensionALayout;
-            for(int i = 0; i<transform.childCount;i++)
+            if (otherDimension)
             {
-                gameObject.transform.GetChild(i).gameObject.layer = 8;
+                actualDimension = EnemyManager.instance.dimensionALayout;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    gameObject.transform.GetChild(i).gameObject.layer = 8;
+                }
+                gameObject.layer = 8;
             }
-            gameObject.layer = 8;
+            else
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    gameObject.transform.GetChild(i).gameObject.layer = 11;
+                }
+                actualDimension = EnemyManager.instance.dimensionBLayout;
+                gameObject.layer = 11;
+            }
         }
         else
         {
-            for (int i = 0; i < transform.childCount; i++)
+            int randomDimension = Random.Range(0, 2);
+            if (randomDimension == 0)
             {
-                gameObject.transform.GetChild(i).gameObject.layer = 11;
+                actualDimension = EnemyManager.instance.dimensionALayout;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    gameObject.transform.GetChild(i).gameObject.layer = 8;
+                }
+                gameObject.layer = 8;
             }
-            actualDimension = EnemyManager.instance.dimensionBLayout;
-            gameObject.layer = 11;
+            else
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    gameObject.transform.GetChild(i).gameObject.layer = 11;
+                }
+                actualDimension = EnemyManager.instance.dimensionBLayout;
+                gameObject.layer = 11;
+            }
         }
+       
+        
         EnemyManager.instance.enemyList.Add(gameObject);
         EnemyManager.instance.CheckLight(gameObject);
         enemyAnimators.AddRange(GetComponentsInChildren<Animator>());

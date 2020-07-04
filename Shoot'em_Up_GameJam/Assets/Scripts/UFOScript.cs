@@ -62,6 +62,7 @@ public class UFOScript : BaseEnemy
     private void Teleport()
     {
         Vector2 tpVector = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f, 1f)).normalized * tpDistToPlayer;
+        ParticuleManagerScript.instance.CreateTpParticules(transform.position);
         rb.position = (Vector2)PlayerScript.instance.transform.position + tpVector;
     }
 

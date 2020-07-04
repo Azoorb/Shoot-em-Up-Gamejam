@@ -32,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1;
+        Time.timeScale = 1;
         if(instance == null)
         {
             instance = this;
@@ -235,12 +236,17 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        shipAnim.SetTrigger("TakeDamage");
-        hp -= damage;
-        if(hp<=0)
+        if(canTakeDamage)
         {
-            Died();
+            Debug.Log("j'ai mal");
+            shipAnim.SetTrigger("TakeDamage");
+            hp -= damage;
+            if (hp <= 0)
+            {
+                Died();
+            }
         }
+        
     }
 
     public void Died()
