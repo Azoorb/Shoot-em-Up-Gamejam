@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Net;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class LevelManager : MonoBehaviour
     GameObject panelUpgrade;
     public Animator transition;
     List<GameObject> listCardChoosen;
+    [SerializeField]
+    GameObject textRetry;
     private void Awake()
     {
         
@@ -83,5 +86,17 @@ public class LevelManager : MonoBehaviour
         transition.SetBool("Start", false);
         transition.SetBool("End", true);
         Time.timeScale = 1;
+    }
+
+    public void ShowRetry()
+    {
+        Time.timeScale = 0;
+        textRetry.SetActive(true);
+
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

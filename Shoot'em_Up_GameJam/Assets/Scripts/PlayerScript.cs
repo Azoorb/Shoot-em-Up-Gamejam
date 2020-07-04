@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Awake()
     {
-
+        Time.timeScale = 1;
         if(instance == null)
         {
             instance = this;
@@ -237,5 +237,16 @@ public class PlayerScript : MonoBehaviour
     {
         shipAnim.SetTrigger("TakeDamage");
         hp -= damage;
+        if(hp<=0)
+        {
+            Died();
+        }
+    }
+
+    public void Died()
+    {
+        
+        LevelManager.instance.ShowRetry();
+        Destroy(gameObject);
     }
 }

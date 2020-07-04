@@ -21,23 +21,33 @@ public class UFOScript : BaseEnemy
     protected override void Update()
     {
         base.Update();
-        if (Vector2.Distance(PlayerScript.instance.transform.position, transform.position) >= maxDist)
+        if(PlayerScript.instance != null)
         {
-            wantTp = true;
-        }
-        else
-        {
-            wantTp = false;
-        }
+            if (Vector2.Distance(PlayerScript.instance.transform.position, transform.position) >= maxDist)
+            {
+                wantTp = true;
+            }
+            else
+            {
+                wantTp = false;
+            }
 
-        if (readyTp && (wantTp || mustTp) && !freeze)
-        {
-            StartCoroutine(TimerTeleport());
-            Teleport();
+            if (readyTp && (wantTp || mustTp) && !freeze)
+            {
+                StartCoroutine(TimerTeleport());
+                Teleport();
+            }
         }
+       
     }
 
-    protected override void RotateToPlayer() => transform.up = (Vector2) (PlayerScript.instance.transform.position - transform.position);
+    protected override void RotateToPlayer()
+    {
+        if (PlayerScript.instance != null)
+        {
+            transform.up = (Vector2)(PlayerScript.instance.transform.position - transform.position);
+        }
+    }
 
 
 

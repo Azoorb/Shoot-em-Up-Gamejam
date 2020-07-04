@@ -52,7 +52,14 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         RotateToPlayer();
     }
 
-    protected virtual void RotateToPlayer() => transform.right = (Vector2)(PlayerScript.instance.transform.position - transform.position);
+    protected virtual void RotateToPlayer()
+    {
+        if (PlayerScript.instance != null)
+        {
+            transform.right = (Vector2)(PlayerScript.instance.transform.position - transform.position);
+        }
+            
+    }
     public virtual void TakeDammage(int damage)
     {
         hp -= damage;
