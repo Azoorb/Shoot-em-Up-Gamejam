@@ -73,12 +73,13 @@ public class P40WScript : BaseEnemy
     protected override void OnCollisionStay2D(Collision2D c)
     {
         base.OnCollisionStay2D(c);
-        if (c.gameObject.CompareTag("Terrain") && isCharging)
-        {
-            isCharging = false;
-            StartCoroutine(Stun());
-        }
+        //if (c.gameObject.CompareTag("Terrain") && isCharging)
+        //{
+        //    isCharging = false;
+        //    StartCoroutine(Stun());
+        //}
     }
+
 
     private void OnCollisionEnter2D(Collision2D c)
     {        
@@ -151,6 +152,13 @@ public class P40WScript : BaseEnemy
         
 
         isCharging = true;
+        StartCoroutine(StopCharge());
+    }
+
+    private IEnumerator StopCharge()
+    {
+        yield return new WaitForSeconds(1f);
+        isCharging = false;
     }
     private IEnumerator Stun()
     {

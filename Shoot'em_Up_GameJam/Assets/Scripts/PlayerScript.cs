@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     Animator boostAnim;
     Animator shipAnim;
     [SerializeField]
-    int hp;
+    public int hp;
     public static PlayerScript instance;
     bool inEchap = false;
     [SerializeField]
@@ -75,7 +75,13 @@ public class PlayerScript : MonoBehaviour
         Physics2D.IgnoreLayerCollision(12, 11, true);
         shipAnim = GetComponent<Animator>();
         actualDimension = layerDimensionA;
+        
 
+    }
+
+    private void Start()
+    {
+        SliderManager.instance.InitializeSliderPlayer();
     }
 
     private void Update()
@@ -104,14 +110,11 @@ public class PlayerScript : MonoBehaviour
         
     }
 
-    public void CanTakeDamageTrue()
-    {
-        canTakeDamage = true;
-    }
-
-    public void CanTakeDamageFalse()
+   private IEnumerator TakeDamageTimer()
     {
         canTakeDamage = false;
+        yield return new WaitForSeconds(1);
+        canTakeDamage = true;
     }
 
     private void ChangeDimension()
@@ -240,12 +243,15 @@ public class PlayerScript : MonoBehaviour
     {
         if(canTakeDamage)
         {
+            SliderManager.instance.TakeDamage(damage);
             shipAnim.SetTrigger("TakeDamage");
             hp -= damage;
+            
             if (hp <= 0)
             {
                 Died();
             }
+            StartCoroutine(TakeDamageTimer());
         }
         
     }

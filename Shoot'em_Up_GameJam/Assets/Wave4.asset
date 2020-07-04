@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48ea5ac768b68149bdbe8205d2089b4, type: 3}
   m_Name: Wave4
   m_EditorClassIdentifier: 
-  enemyInWave: []
-  numberEnemyInWave: 
-  hpBonusForEnemy: 
-  minIntervalSpawn: 0
-  maxIntervalSpawn: 0
+  enemyInWave:
+  - {fileID: 2032924357483332330, guid: 646af9c4b529b584ea93bfac9592341e, type: 3}
+  numberEnemyInWave: 01000000
+  hpBonusForEnemy: 00000000
+  minIntervalSpawn: 0.13
+  maxIntervalSpawn: 1

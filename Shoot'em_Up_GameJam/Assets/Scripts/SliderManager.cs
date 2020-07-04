@@ -7,7 +7,7 @@ public class SliderManager : MonoBehaviour
 {
     public static SliderManager instance;
     [SerializeField]
-    Slider sliderExp;
+    Slider sliderExp, sliderHealthPlayer;
     [SerializeField]
     int stepForExp,startValueExp;
 
@@ -23,18 +23,24 @@ public class SliderManager : MonoBehaviour
     private void InitializeSlider()
 
     {
-        SetMinSlider(0);
-        SetMaxValue(startValueExp);
-    }
-    private void SetMinSlider(int value)
-    {
-        sliderExp.minValue = value;
+        sliderExp.minValue = 0;
+        sliderExp.maxValue = startValueExp;
     }
 
-    private void SetMaxValue(int value)
+    public void InitializeSliderPlayer()
     {
-        sliderExp.maxValue = value;
+        sliderHealthPlayer.minValue = 0;
+        sliderHealthPlayer.maxValue = PlayerScript.instance.hp;
+        sliderHealthPlayer.value = PlayerScript.instance.hp;
     }
+
+    public void TakeDamage(int damage)
+    {
+        sliderHealthPlayer.value -= damage;
+    }
+   
+
+   
 
     public void GainExp(int value)
     {
@@ -47,7 +53,7 @@ public class SliderManager : MonoBehaviour
             sliderExp.maxValue = oldValue + stepForExp;
             sliderExp.value = 0;
             LevelManager.instance.GainLevel();
-            SetMinSlider(0);
+            sliderExp.minValue = 0;
         }
     }
 
