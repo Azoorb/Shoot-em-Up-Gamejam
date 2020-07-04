@@ -9088,6 +9088,8 @@ MonoBehaviour:
     type: 3}
   explosionSprites: {fileID: 1230983163034799779, guid: be5db932be9857c4ca070112c9b8c5ea,
     type: 3}
+  tpSprites: {fileID: 7104955879287575184, guid: 817302f0038ff8344bf8bd5f40d88ca2,
+    type: 3}
   explosionWithParticules: 0
 --- !u!4 &1921405005
 Transform:
