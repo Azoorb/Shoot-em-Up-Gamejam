@@ -9,4 +9,9 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
