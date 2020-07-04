@@ -27,6 +27,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     int hp;
     public static PlayerScript instance;
+    bool inEchap = false;
+    [SerializeField]
+    GameObject pauseText;
     
 
     private void Awake()
@@ -59,6 +62,7 @@ public class PlayerScript : MonoBehaviour
 
         };
         controller.Player.SwitchDimension.performed += ctx => ChangeDimension();
+        controller.Player.Pause.performed += ctx => PauseGame();
         
         colliderShip = GetComponent<Collider2D>();
         Physics2D.IgnoreLayerCollision(8, 9);
@@ -255,4 +259,20 @@ public class PlayerScript : MonoBehaviour
         LevelManager.instance.ShowRetry();
         Destroy(gameObject);
     }
+    public void PauseGame()
+    {
+        if(!inEchap)
+        {
+            Time.timeScale = 0;
+            inEchap = true;
+            pauseText.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            inEchap = false;
+            pauseText.SetActive(false);
+        }
+    }
+
 }

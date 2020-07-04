@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Tap"
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4ceaae6d-b92a-465b-94a5-163440dd3042",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -196,7 +204,7 @@
                     "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -215,8 +223,8 @@
                 {
                     "name": "",
                     "id": "dd92ce64-189c-41a7-88f3-d91671c2712e",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Laser",
@@ -231,6 +239,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "SwitchDimension",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25b1facc-7dc0-400d-9031-334766e4c979",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SwitchDimension",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "874491e0-7f88-4724-bdb9-08d9495d29fc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c7e3d79-6650-473d-802d-af89fbfc80a2",
+                    "path": "<Gamepad>/start",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

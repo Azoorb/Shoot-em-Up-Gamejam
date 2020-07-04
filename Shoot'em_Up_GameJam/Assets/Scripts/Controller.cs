@@ -57,6 +57,14 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Tap""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ceaae6d-b92a-465b-94a5-163440dd3042"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -209,7 +217,7 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -228,8 +236,8 @@ public class @Controller : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""dd92ce64-189c-41a7-88f3-d91671c2712e"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Laser"",
@@ -244,6 +252,39 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""SwitchDimension"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25b1facc-7dc0-400d-9031-334766e4c979"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SwitchDimension"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""874491e0-7f88-4724-bdb9-08d9495d29fc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c7e3d79-6650-473d-802d-af89fbfc80a2"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -282,6 +323,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Laser = m_Player.FindAction("Laser", throwIfNotFound: true);
         m_Player_SwitchDimension = m_Player.FindAction("SwitchDimension", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -336,6 +378,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Laser;
     private readonly InputAction m_Player_SwitchDimension;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Controller m_Wrapper;
@@ -345,6 +388,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Laser => m_Wrapper.m_Player_Laser;
         public InputAction @SwitchDimension => m_Wrapper.m_Player_SwitchDimension;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -369,6 +413,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @SwitchDimension.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchDimension;
                 @SwitchDimension.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchDimension;
                 @SwitchDimension.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchDimension;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +435,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @SwitchDimension.started += instance.OnSwitchDimension;
                 @SwitchDimension.performed += instance.OnSwitchDimension;
                 @SwitchDimension.canceled += instance.OnSwitchDimension;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -417,5 +467,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnLaser(InputAction.CallbackContext context);
         void OnSwitchDimension(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

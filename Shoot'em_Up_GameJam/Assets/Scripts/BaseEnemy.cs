@@ -222,4 +222,5 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         canTakeDamageFromLaser = true;
     }
 
+    
 }
