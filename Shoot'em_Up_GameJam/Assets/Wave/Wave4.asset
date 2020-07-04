@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Wave4
   m_EditorClassIdentifier: 
   enemyInWave:
-  - {fileID: 2032924357483332330, guid: 646af9c4b529b584ea93bfac9592341e, type: 3}
-  numberEnemyInWave: 01000000
-  hpBonusForEnemy: 00000000
-  minIntervalSpawn: 0.13
+  - {fileID: 2864536968503845745, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9, type: 3}
+  - {fileID: 7369723757000909014, guid: 60fa6a709315ab346a6750622e49480d, type: 3}
+  numberEnemyInWave: 0500000014000000
+  hpBonusForEnemy: 0000000001000000
+  minIntervalSpawn: 0.2
   maxIntervalSpawn: 1
