@@ -150,6 +150,7 @@ public class PlayerScript : MonoBehaviour
         canShoot = false;
         StopCoroutine(ShootTimer());
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
+        SoundManager.instance.PlayBulletPlayerSound();
         Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
         bullet.GetComponent<BulletScript>().InitializeBullet(vectorAim, CheckShootState(freezeProbabily), CheckShootState(fireProbabily));
         StartCoroutine(ShootTimer());
