@@ -9,7 +9,7 @@ public class SliderManager : MonoBehaviour
     [SerializeField]
     Slider sliderExp;
     [SerializeField]
-    int stepForExp;
+    int stepForExp,startValueExp;
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class SliderManager : MonoBehaviour
 
     {
         SetMinSlider(0);
-        SetMaxValue(20);
+        SetMaxValue(startValueExp);
     }
     private void SetMinSlider(int value)
     {
@@ -38,11 +38,13 @@ public class SliderManager : MonoBehaviour
 
     public void GainExp(int value)
     {
+        Debug.Log("gainExp" + value);
         sliderExp.value += value;
         if(sliderExp.value >= sliderExp.maxValue)
         {
-            Debug.Log("Coucou");
-            sliderExp.maxValue = sliderExp.maxValue + stepForExp;
+            
+            float oldValue = sliderExp.maxValue;
+            sliderExp.maxValue = oldValue + stepForExp;
             sliderExp.value = 0;
             LevelManager.instance.GainLevel();
             SetMinSlider(0);

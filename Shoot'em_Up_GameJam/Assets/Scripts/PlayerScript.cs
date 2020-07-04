@@ -101,7 +101,6 @@ public class PlayerScript : MonoBehaviour
             Shoot();
             
         }
-        Debug.Log(canShoot);
         
     }
 
@@ -146,7 +145,6 @@ public class PlayerScript : MonoBehaviour
     private void Shoot()
     {
         canShoot = false;
-        Debug.Log("Shoot");
         StopCoroutine(ShootTimer());
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.transform.position, Quaternion.identity);
         Physics2D.IgnoreCollision(colliderShip, bullet.GetComponent<Collider2D>());
@@ -242,7 +240,6 @@ public class PlayerScript : MonoBehaviour
     {
         if(canTakeDamage)
         {
-            Debug.Log("j'ai mal");
             shipAnim.SetTrigger("TakeDamage");
             hp -= damage;
             if (hp <= 0)

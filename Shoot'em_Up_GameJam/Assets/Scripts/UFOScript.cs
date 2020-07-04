@@ -63,7 +63,11 @@ public class UFOScript : BaseEnemy
     {
         Vector2 tpVector = new Vector2(Random.Range(-1f, 1f),Random.Range(-1f, 1f)).normalized * tpDistToPlayer;
         ParticuleManagerScript.instance.CreateTpParticules(transform.position);
-        rb.position = (Vector2)PlayerScript.instance.transform.position + tpVector;
+        if(PlayerScript.instance != null)
+        {
+            rb.position = (Vector2)PlayerScript.instance.transform.position + tpVector;
+        }
+        
     }
 
     private IEnumerator TimerTeleport()

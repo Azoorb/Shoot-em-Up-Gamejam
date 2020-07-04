@@ -4,17 +4,18 @@ using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
-public class P40WScript : BaseEnemy, IEnemy
+public class P40WScript : BaseEnemy
 {
     private GameObject body;
     private Animator[] anims;
+    [SerializeField]
+    Slider sliderBoss;
 
     private int lastAttack;
 
     [Header("P40W Settings")]
-    [SerializeField] int life;
-    private int maxLife;
     [SerializeField] GameObject lifeFiller;
     [SerializeField] float timeBeetweenAttacks;
 
@@ -38,10 +39,11 @@ public class P40WScript : BaseEnemy, IEnemy
 
     protected override void Start()
     {
+        base.Start();
+        AddHp(0);
         body = GetComponentsInChildren<SpriteRenderer>()[0].gameObject;
         rb = GetComponent<Rigidbody2D>();
-
-        maxLife = life;
+        sliderBoss.maxValue = hp;
 
         SetupAnimations();
         StartCoroutine(NewAttack());
@@ -50,8 +52,12 @@ public class P40WScript : BaseEnemy, IEnemy
 
     protected override void  Update()
     {
-        if (!isCharging && !stunned)
-            body.transform.up = -(Vector2)(PlayerScript.instance.transform.position - transform.position);
+        if(PlayerScript.instance != null)
+        {
+            if (!isCharging && !stunned)
+                body.transform.up = -(Vector2)(PlayerScript.instance.transform.position - transform.position);
+        }
+        
     }
 
     private void SetupAnimations()
@@ -75,7 +81,7 @@ public class P40WScript : BaseEnemy, IEnemy
     }
 
     private void OnCollisionEnter2D(Collision2D c)
-    {
+    {        
         if (c.gameObject.CompareTag("PlayerBullet"))
         {
             foreach (Animator a in anims)
@@ -137,7 +143,12 @@ public class P40WScript : BaseEnemy, IEnemy
 
         chargesLeft -= 1;
 
-        chargeMovement = (PlayerScript.instance.transform.position - transform.position).normalized * chargeSpeed;
+        if(PlayerScript.instance != null)
+        {
+            chargeMovement = (PlayerScript.instance.transform.position - transform.position).normalized * chargeSpeed;
+        }
+
+        
 
         isCharging = true;
     }
@@ -184,18 +195,10 @@ public class P40WScript : BaseEnemy, IEnemy
 
     public override void TakeDammage(int damage)
     {
-        Debug.Log("HIT");
-
-        life -= damage;
-
-        if (life <= 0)
-        {
-            Died();
-        }
-        else
-        {
-            lifeFiller.transform.localScale = new Vector3(life / maxLife * 3.875f, 0.875f, 1f);
-        }
+        base.TakeDammage(damage);
+        Debug.Log("yo");
+        sliderBoss.value -= damage;
+        
     }
     private void Died()
     {
@@ -204,10 +207,16 @@ public class P40WScript : BaseEnemy, IEnemy
         Destroy(gameObject);
     }
 
-    
+    public override void AddHp(int hp)
+    {
+        base.AddHp(hp);
+        sliderBoss.maxValue = this.hp;
+        sliderBoss.value = this.hp;
+    }
 
-    public override void AddHp(int hp) => life+=hp;
 
-   
-    
+
+
+
+
 }

@@ -60,7 +60,6 @@ public class LevelManager : MonoBehaviour
         }
         for(int i =0;i<listCardChoosen.Count;i++)
         {
-            Debug.Log("Yo : " + i);
             cardPlaceList[i].transform.GetChild(0).GetComponent<Image>().sprite = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().miniatureSprite;
             cardPlaceList[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().description;
             cardPlaceList[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = listCardChoosen[i].GetComponent<LevelScript>().setCard[0].GetComponent<UpgradeBase>().attributs;
