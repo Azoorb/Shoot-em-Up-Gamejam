@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuScript : MonoBehaviour
+namespace Menu
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MenuScript : MonoBehaviour
     {
-        
-    }
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        void Update()
+        {
+
+        }
     }
 }
