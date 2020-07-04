@@ -20,10 +20,12 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic()
     {
         music.Play();
+        music.volume = 0.2f;
     }
 
     public void PlayBulletPlayerSound()
     {
+        bulletPlayerSound.volume = 0.2f;
         bulletPlayerSound.Play();
     }
 }
