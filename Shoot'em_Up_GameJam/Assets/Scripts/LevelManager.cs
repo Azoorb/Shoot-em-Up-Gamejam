@@ -98,4 +98,9 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void Play()
+    {
+        SceneManager.LoadScene("Léo");
+    }
 }
