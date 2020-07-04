@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b36b0799609df8d48919d5189f49ec5c
+guid: efb48a7e9e2693f4a9cc605f325b128b
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Munro
+  fontName: ABSTER
   fontNames:
-  - Munro
+  - ABSTER
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
