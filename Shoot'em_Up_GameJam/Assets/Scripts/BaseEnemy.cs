@@ -25,7 +25,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     {
         if (forceDimension)
         {
-            if (otherDimension)
+            if (!otherDimension)
             {
                 actualDimension = EnemyManager.instance.dimensionALayout;
                 for (int i = 0; i < transform.childCount; i++)
