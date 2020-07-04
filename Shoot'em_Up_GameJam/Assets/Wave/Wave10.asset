@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a48ea5ac768b68149bdbe8205d2089b4, type: 3}
-  m_Name: Wave4
+  m_Name: Wave10
   m_EditorClassIdentifier: 
   enemyInWave:
-  - {fileID: 2864536968503845745, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9, type: 3}
+  - {fileID: 2032924357483332330, guid: 646af9c4b529b584ea93bfac9592341e, type: 3}
   - {fileID: 7369723757000909014, guid: 60fa6a709315ab346a6750622e49480d, type: 3}
-  numberEnemyInWave: 0a00000014000000
-  hpBonusForEnemy: 0000000001000000
-  minIntervalSpawn: 0.2
-  maxIntervalSpawn: 1
+  - {fileID: 2864536968503845745, guid: 8130b3fd5d1db1146bf9184fcc9f2dd9, type: 3}
+  numberEnemyInWave: 010000000500000005000000
+  hpBonusForEnemy: 0a0000000000000001000000
+  minIntervalSpawn: 0.5
+  maxIntervalSpawn: 2
