@@ -205,7 +205,9 @@ MonoBehaviour:
   actualDimension:
     serializedVersion: 2
     m_Bits: 0
-  light: {fileID: 1616980427}
+  redLight: {fileID: 1616980427}
+  forceDimension: 0
+  otherDimension: 0
   minDistance: 5
   fireRate: 2
   prefabShoot: {fileID: 4430345068132288739, guid: 369e379d2cb05634f8ad90505ca31472,

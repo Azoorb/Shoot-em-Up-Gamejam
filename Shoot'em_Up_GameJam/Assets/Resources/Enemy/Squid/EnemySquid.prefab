@@ -250,7 +250,9 @@ MonoBehaviour:
   actualDimension:
     serializedVersion: 2
     m_Bits: 0
-  light: {fileID: 1761978636}
+  redLight: {fileID: 1761978636}
+  forceDimension: 0
+  otherDimension: 0
 --- !u!61 &5867491932817542695
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     public LayerMask actualDimension;
     private float tickBurn = 1f;
     protected List<Animator> enemyAnimators;
-    public GameObject light;
+    public GameObject redLight;
     protected bool canTakeDamageFromLaser = true;
     [SerializeField]
     bool forceDimension, otherDimension;
@@ -103,8 +103,12 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!freeze)
         {
-            Vector2 dir = (PlayerScript.instance.transform.position - transform.position).normalized;
-            rb.position += dir * speed * Time.fixedDeltaTime;
+            if(PlayerScript.instance !=null)
+            {
+                Vector2 dir = (PlayerScript.instance.transform.position - transform.position).normalized;
+                rb.position += dir * speed * Time.fixedDeltaTime;
+            }
+            
         }
         
     }

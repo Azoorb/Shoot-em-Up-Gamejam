@@ -23,11 +23,11 @@ public class EnemyManager : MonoBehaviour
         
         if (enemy.GetComponent<BaseEnemy>().actualDimension != PlayerScript.instance.actualDimension)
         {
-            enemy.GetComponent<BaseEnemy>().light.SetActive(true);
+            enemy.GetComponent<BaseEnemy>().redLight.SetActive(true);
         }
         else
         {
-            enemy.GetComponent<BaseEnemy>().light.SetActive(false);
+            enemy.GetComponent<BaseEnemy>().redLight.SetActive(false);
         }
     }
 

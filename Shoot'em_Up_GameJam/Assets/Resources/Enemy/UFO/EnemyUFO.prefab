@@ -333,7 +333,9 @@ MonoBehaviour:
   actualDimension:
     serializedVersion: 2
     m_Bits: 0
-  light: {fileID: 360945778451655276}
+  redLight: {fileID: 360945778451655276}
+  forceDimension: 0
+  otherDimension: 0
   tpDistToPlayer: 2.5
   tpRate: 5
   maxDist: 5.5
