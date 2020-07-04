@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4757957754137661534}
   - component: {fileID: 5051698781898310022}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3736374969598483222}
   - component: {fileID: 3081947607396276423}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2472729152259636156}
   - component: {fileID: 2262551860312566807}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 1111525757177472165}
   - component: {fileID: 4899333260961914160}
   - component: {fileID: 8617271352746788728}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 1845671564293664812}
   - component: {fileID: 1575521131473492779}
   - component: {fileID: 5859414760029719224}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 3621134386656203750}
   - component: {fileID: 2552483363278445076}
   - component: {fileID: 2424124434118222332}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: P-40 Warhawk
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7875118330570357710}
   - component: {fileID: 7170640364905090037}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 885625947360380443}
   - component: {fileID: 32207898446654596}
   - component: {fileID: 7370713758091994064}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 4420384195164951886}
   - component: {fileID: 8138862509731252476}
   - component: {fileID: 4540046930600327850}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060202612178840058}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 8839879638681251878}
   - component: {fileID: 8256196965786948458}
   - component: {fileID: 3681568555815908610}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Renderer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8241529741224016872}
   - component: {fileID: 4901018177415918058}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407512467428619217}
   - component: {fileID: 9211795503849579891}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8692335103918924042}
   - component: {fileID: 799208128967787928}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 1672806065232969154}
   - component: {fileID: 4547204147955452611}
   - component: {fileID: 7472776070563561750}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682771427613926706}
   - component: {fileID: 2586233814456280183}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7149993969006099139}
   - component: {fileID: 4129841223726339708}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2193037509031666302}
   - component: {fileID: 1159518527959139160}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,7 +1480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 123366016095586871}
   - component: {fileID: 3629588064629066862}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,7 +1562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7661605093951871352}
   - component: {fileID: 2036893285423289231}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4295971839733150877}
   - component: {fileID: 8735637860530276207}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1727,7 +1727,7 @@ GameObject:
   - component: {fileID: 4057525298866662742}
   - component: {fileID: 8297667018878293276}
   - component: {fileID: 1546889035067283844}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1828,7 +1828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1595652927300152677}
   - component: {fileID: 7222080461951657237}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1910,7 +1910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4376005585064931855}
   - component: {fileID: 1547374101184932180}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1993,7 +1993,7 @@ GameObject:
   - component: {fileID: 985528643638129971}
   - component: {fileID: 4381229830865387902}
   - component: {fileID: 2932954190180691411}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2094,7 +2094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306254164934942140}
   - component: {fileID: 4312904917404836352}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
