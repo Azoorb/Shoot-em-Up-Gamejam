@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     public Animator cardTransition;
     List<GameObject> listCardChoosen;
     [SerializeField]
-    GameObject textRetry;
+    GameObject textRetry, textAbandon;
     [SerializeField] private Animator circleTransition;
     private void Awake()
     {
@@ -92,23 +92,28 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = 0;
         textRetry.SetActive(true);
-
+        textAbandon.SetActive(true);
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(Load("Léo"));
     }
 
     public void Play()
     {
-        circleTransition.SetTrigger("Load");
-        StartCoroutine(Load());
+        StartCoroutine(Load("Léo"));
     }
 
-    IEnumerator Load()
+    public void Menu()
     {
+        StartCoroutine(Load("Menu"));
+    }
+
+    IEnumerator Load(string scene)
+    {
+        circleTransition.SetTrigger("Load");
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Léo");
+        SceneManager.LoadScene(scene);
     }
 }

@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb4a908a92371440b2564e9e0df0ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
+  circleTransition: {fileID: 0}
 --- !u!81 &314399127
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb4a908a92371440b2564e9e0df0ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 1321214466}
+  circleTransition: {fileID: 1321214466}
 --- !u!114 &953820595
 MonoBehaviour:
   m_ObjectHideFlags: 0
