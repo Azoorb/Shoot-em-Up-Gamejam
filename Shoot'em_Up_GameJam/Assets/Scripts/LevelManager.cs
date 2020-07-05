@@ -97,23 +97,34 @@ public class LevelManager : MonoBehaviour
 
     public void Retry()
     {
-        StartCoroutine(Load("Léo"));
+        Debug.Log("hello");
+        SceneManager.LoadScene(2);
+        //StartCoroutine(Load("Léo"));
     }
 
     public void Play()
     {
-        StartCoroutine(Load("Léo"));
+        SceneManager.LoadScene(2);
+        //StartCoroutine(Load("Léo"));
     }
 
     public void Menu()
     {
-        StartCoroutine(Load("Menu"));
+        SceneManager.LoadScene(0);
+        //StartCoroutine(Load("Menu"));
     }
 
     IEnumerator Load(string scene)
     {
         circleTransition.SetTrigger("Load");
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(scene);
+        if(scene.Equals("Léo"))
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if(scene.Equals("Menu"))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

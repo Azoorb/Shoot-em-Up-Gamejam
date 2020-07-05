@@ -7,6 +7,8 @@ public class MenuScript : MonoBehaviour
 {
     [SerializeField] private Animator circleTransition;
 
+
+
     public void LoadGame()
     {
         circleTransition.SetTrigger("Load");
