@@ -249,19 +249,19 @@ public class PlayerScript : MonoBehaviour
             hp -= damage;
             
             if (hp <= 0)
-            {
                 Died();
-            }
-            StartCoroutine(TakeDamageTimer());
+
+            if (hp > 0)
+                StartCoroutine(TakeDamageTimer());
         }
         
     }
 
     public void Died()
     {
-        
+        canTakeDamage = false;
         LevelManager.instance.ShowRetry();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     public void PauseGame()
     {
