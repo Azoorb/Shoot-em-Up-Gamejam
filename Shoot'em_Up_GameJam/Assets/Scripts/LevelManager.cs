@@ -15,10 +15,11 @@ public class LevelManager : MonoBehaviour
     List<GameObject> cardPlaceList;
     [SerializeField]
     GameObject panelUpgrade;
-    public Animator transition;
+    public Animator cardTransition;
     List<GameObject> listCardChoosen;
     [SerializeField]
     GameObject textRetry;
+    [SerializeField] private Animator circleTransition;
     private void Awake()
     {
         
@@ -35,8 +36,8 @@ public class LevelManager : MonoBehaviour
 
     public void GainLevel()
     {
-        transition.SetBool("End", false);
-        transition.SetBool("Start", true);
+        cardTransition.SetBool("End", false);
+        cardTransition.SetBool("Start", true);
         Time.timeScale = 0;
         List<int> listIndexSetCardSelected = new List<int>();
         for(int counter = 0;counter < 3 && counter< setCardList.Count;counter++)
@@ -82,8 +83,8 @@ public class LevelManager : MonoBehaviour
             setCardList.Remove(setCard);
 
         }
-        transition.SetBool("Start", false);
-        transition.SetBool("End", true);
+        cardTransition.SetBool("Start", false);
+        cardTransition.SetBool("End", true);
         Time.timeScale = 1;
     }
 
@@ -101,6 +102,13 @@ public class LevelManager : MonoBehaviour
 
     public void Play()
     {
+        circleTransition.SetTrigger("Load");
+        StartCoroutine(Load());
+    }
+
+    IEnumerator Load()
+    {
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Léo");
     }
 }
