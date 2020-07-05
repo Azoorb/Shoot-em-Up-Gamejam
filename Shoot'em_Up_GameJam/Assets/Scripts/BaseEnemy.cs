@@ -91,6 +91,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
     public virtual void TakeDammage(int damage)
     {
         hp -= damage;
+        SoundManager.instance.PlayTakeDamagePlayerSound();
         if (enemyAnimators.Count == 1)
             enemyAnimators[0].SetTrigger("Hurt");
         if (hp <= 0)
@@ -119,6 +120,7 @@ public class BaseEnemy : MonoBehaviour, IEnemy
         ParticuleManagerScript.instance.CreateExplosion(transform.position);
         SliderManager.instance.GainExp(expDrop);
         EnemyManager.instance.enemyList.Remove(gameObject);
+        SoundManager.instance.PlayExplosionEnemie();
         Destroy(gameObject);
     }
 
