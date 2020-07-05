@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     private List<int> actualNumberEnemyLeft;
     private List<GameObject> actualEnemyLeft;
     private List<int> actualHpBonusEnemy;
+    private int bonusHp =0 ;
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class WaveManager : MonoBehaviour
             //Faut modifier le spawn ici 
             int randomSpawnPoint = Random.Range(0, transform.childCount);
             GameObject enemy = Instantiate(actualEnemyLeft[randomEnemy], transform.GetChild(randomSpawnPoint).transform.position, Quaternion.identity);
-            enemy.GetComponent<IEnemy>().AddHp(actualHpBonusEnemy[randomEnemy]);
+            enemy.GetComponent<IEnemy>().AddHp(actualHpBonusEnemy[randomEnemy]+bonusHp);
             actualNumberEnemyLeft[randomEnemy]--;
             if(actualNumberEnemyLeft[randomEnemy] == 0)
             {
@@ -71,6 +72,13 @@ public class WaveManager : MonoBehaviour
             {
                 StartRound(actualRound);
             }
+            else
+            {
+                actualRound = 0;
+                bonusHp += 2;
+                StartRound(actualRound); 
+            }
+
         }
         
     }
