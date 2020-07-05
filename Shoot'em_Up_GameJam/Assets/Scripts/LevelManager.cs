@@ -18,7 +18,8 @@ public class LevelManager : MonoBehaviour
     public Animator cardTransition;
     List<GameObject> listCardChoosen;
     [SerializeField]
-    GameObject textRetry, textAbandon;
+    GameObject textRetry;
+    [SerializeField] private GameObject textAbandon;
     [SerializeField] private Animator circleTransition;
     private void Awake()
     {
@@ -90,16 +91,16 @@ public class LevelManager : MonoBehaviour
 
     public void ShowRetry()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         textRetry.SetActive(true);
         textAbandon.SetActive(true);
     }
 
     public void Retry()
     {
-        Debug.Log("hello");
-        SceneManager.LoadScene(2);
-        //StartCoroutine(Load("Léo"));
+
+        StartCoroutine(Load(SceneManager.GetActiveScene().name));
+
     }
 
     public void Play()
@@ -110,21 +111,15 @@ public class LevelManager : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene(0);
-        //StartCoroutine(Load("Menu"));
+
+        StartCoroutine(Load("Menu 1"));
     }
 
-    IEnumerator Load(string scene)
+    private IEnumerator Load(string scene)
     {
         circleTransition.SetTrigger("Load");
         yield return new WaitForSeconds(1.5f);
-        if(scene.Equals("Léo"))
-        {
-            SceneManager.LoadScene(2);
-        }
-        else if(scene.Equals("Menu"))
-        {
-            SceneManager.LoadScene(0);
-        }
+        Debug.Log("Waited");
+        SceneManager.LoadScene(scene);
     }
 }
