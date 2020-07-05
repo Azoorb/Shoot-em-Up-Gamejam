@@ -123,6 +123,7 @@ public class P40WScript : BaseEnemy
         while (_count > 0)
         {
             GameObject fb = Instantiate(missilePrefab, shootPoint.position, Quaternion.identity);
+            SoundManager.instance.PlayBulletEnemieSound();
 
             _count--;
 
@@ -208,12 +209,7 @@ public class P40WScript : BaseEnemy
         sliderBoss.value -= damage;
         
     }
-    private void Died()
-    {
-        ParticuleManagerScript.instance.CreateExplosion(transform.position);
-        SliderManager.instance.GainExp(expDrop);
-        Destroy(gameObject);
-    }
+    
 
     public override void AddHp(int hp)
     {

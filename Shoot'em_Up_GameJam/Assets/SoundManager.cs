@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField]
-    AudioSource music, bulletPlayerSound;
+    AudioSource music, bulletPlayerSound, bulletEnemieSound,takeDamagePlayerSound,takeDamageEnemieSound,explosionEnemie;
 
     public static SoundManager instance;
 
@@ -20,12 +20,28 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic()
     {
         music.Play();
-        music.volume = 0.2f;
     }
 
     public void PlayBulletPlayerSound()
     {
-        bulletPlayerSound.volume = 0.2f;
         bulletPlayerSound.Play();
+    }
+
+    public void PlayBulletEnemieSound()
+    {
+        bulletEnemieSound.Play();
+    }
+    public void PlayTakeDamagePlayerSound()
+    {
+        takeDamagePlayerSound.Play();
+    }
+    public void PlayTakeDamageEnemieSound()
+    {
+        takeDamageEnemieSound.Play();
+    }
+
+    public void PlayExplosionEnemie()
+    {
+        explosionEnemie.Play();
     }
 }

@@ -31,7 +31,7 @@ public class EnemyGunnerScript : BaseEnemy
     private void Shoot()
     {
         GameObject bullet = Instantiate(prefabShoot, spawnShoot.transform.position, Quaternion.identity);
-
+        SoundManager.instance.PlayBulletEnemieSound();
         bullet.GetComponent<BulletEnemyScript>().SetTarget(spawnShoot.transform.position - PlayerScript.instance.transform.position);
 
     }
